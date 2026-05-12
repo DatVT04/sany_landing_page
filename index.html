@@ -6,7 +6,7 @@
 <title>Sany Holding — Kiến Tạo Cuộc Sống Đỉnh Cao</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    RESET & BASE
@@ -18,42 +18,44 @@ html { scroll-behavior: smooth; font-size: 16px; }
    DESIGN TOKENS — BRIGHT LUXURY PALETTE
    ============================================================ */
 :root {
-  /* Backgrounds */
-  --bg-page:       #F8F5EF;
+  /* ── Backgrounds ── */
+  --bg-page:       #F9F7F4;
   --bg-white:      #FFFFFF;
-  --bg-section:    #F3EEE7;
-  --bg-dark:       #1C1917;
-  --bg-dark2:      #292524;
+  --bg-section:    #F2EDE6;
+  --bg-dark:       #111110;
+  --bg-dark2:      #1C1A19;
 
-  /* Text */
-  --text-primary:  #1F2933;
-  --text-secondary:#6B7280;
-  --text-light:    #9CA3AF;
-  --text-on-dark:  #F8F5EF;
-  --text-on-dark2: rgba(248,245,239,0.65);
+  /* ── Text ── */
+  --text-primary:  #18120E;
+  --text-secondary:#6B6560;
+  --text-light:    #A09890;
+  --text-on-dark:  #F9F7F4;
+  --text-on-dark2: rgba(249,247,244,0.55);
 
-  /* Gold accent */
-  --gold:          #B88A44;
-  --gold-dark:     #9A7232;
-  --gold-light:    #D4AF72;
-  --gold-pale:     #EDE0C8;
-  --gold-bg:       rgba(184,138,68,0.08);
+  /* ── Gold (richer, brighter) ── */
+  --gold:          #C9A84C;
+  --gold-dark:     #A8893A;
+  --gold-light:    #E0C47A;
+  --gold-pale:     #F0E4C0;
+  --gold-bg:       rgba(201,168,76,0.09);
 
-  /* Borders */
-  --border:        #E5DED3;
-  --border-gold:   rgba(184,138,68,0.25);
+  /* ── Borders ── */
+  --border:        #E8E0D5;
+  --border-gold:   rgba(201,168,76,0.28);
 
-  /* Typography */
-  --serif:         'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* ── Typography ── */
+  --serif:         'Playfair Display', Georgia, serif;
   --sans:          'Inter', Arial, sans-serif;
 
-  /* Shadows */
-  --shadow-sm:     0 1px 4px rgba(0,0,0,0.06);
-  --shadow-md:     0 4px 20px rgba(0,0,0,0.08);
-  --shadow-lg:     0 12px 48px rgba(0,0,0,0.10);
+  /* ── Shadows (sâu hơn, luxury hơn) ── */
+  --shadow-sm:     0 2px 8px rgba(24,18,14,0.07);
+  --shadow-md:     0 6px 28px rgba(24,18,14,0.10);
+  --shadow-lg:     0 16px 56px rgba(24,18,14,0.13);
+  --shadow-gold:   0 8px 32px rgba(201,168,76,0.22);
 
-  /* Easing */
+  /* ── Easing ── */
   --ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ============================================================
@@ -118,6 +120,14 @@ nav.scrolled .nav-logo { color: var(--text-primary); }
 }
 nav.scrolled .nav-links a { color: var(--text-secondary); }
 .nav-links a:hover { color: var(--gold) !important; }
+.nav-links a:not(.nav-cta)::after {
+  content: ''; display: block;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.28s var(--ease);
+  margin-top: 2px;
+}
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
 .nav-cta {
   background: var(--gold);
   color: #fff !important;
@@ -131,78 +141,94 @@ nav.scrolled .nav-links a { color: var(--text-secondary); }
 nav.scrolled .nav-cta { color: #fff !important; }
 
 /* ============================================================
-   HERO — warm overlay, bright feel
+   HERO — split layout
    ============================================================ */
 .hero {
-  height: 100vh; min-height: 700px;
+  height: 100vh; min-height: 720px;
   position: relative;
-  display: flex; flex-direction: column;
-  justify-content: flex-end;
+  display: flex; align-items: flex-end;
   overflow: hidden;
 }
 .hero-img {
   position: absolute; inset: 0;
   background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2000&q=85') center/cover no-repeat;
   transform: scale(1.06);
-  animation: heroZoom 12s var(--ease) forwards;
-  filter: brightness(0.82);
+  animation: heroZoom 14s var(--ease) forwards;
 }
 @keyframes heroZoom { to { transform: scale(1); } }
-
-/* Warm cream overlay — không đen tối */
 .hero-gradient {
   position: absolute; inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(31,25,23,0.35) 0%,
-      rgba(31,25,23,0.05) 40%,
-      rgba(31,25,23,0.55) 75%,
-      rgba(31,25,23,0.88) 100%),
+      rgba(17,17,16,0.28) 0%,
+      transparent        35%,
+      rgba(17,17,16,0.50) 65%,
+      rgba(17,17,16,0.92) 100%),
     linear-gradient(90deg,
-      rgba(31,25,23,0.3) 0%,
-      transparent 55%);
+      rgba(17,17,16,0.45) 0%,
+      rgba(17,17,16,0.05) 60%);
 }
-
 .hero-content {
   position: relative; z-index: 2;
-  padding: 0 80px 96px;
-  max-width: 1100px;
+  width: 100%;
+  padding: 0 72px 88px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: flex-end;
 }
-
-/* Animated entrance */
 .hero-eyebrow {
   display: flex; align-items: center; gap: 14px;
-  margin-bottom: 28px;
-  opacity: 0; animation: fadeUp 0.9s 0.2s both;
+  margin-bottom: 26px;
+  opacity: 0; animation: fadeUp 0.85s 0.15s both;
 }
-.hero-eyebrow-bar { width: 36px; height: 1px; background: var(--gold-light); }
+.hero-eyebrow-bar { width: 32px; height: 1px; background: var(--gold-light); }
 .hero-eyebrow span {
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.28em; text-transform: uppercase;
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--gold-light);
 }
 .hero-h1 {
   font-family: var(--serif);
-  font-size: clamp(52px, 7.5vw, 112px);
-  font-weight: 400; line-height: 0.97;
-  letter-spacing: -0.015em;
+  font-size: clamp(48px, 6.5vw, 96px);
+  font-weight: 400; line-height: 0.96;
+  letter-spacing: -0.018em;
   color: #fff;
-  margin-bottom: 32px;
-  opacity: 0; animation: fadeUp 0.9s 0.38s both;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.85s 0.3s both;
 }
 .hero-h1 em { font-style: italic; color: var(--gold-light); }
-.hero-h1 .indent { display: block; padding-left: 100px; }
-
-.hero-bottom {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 40px;
-  opacity: 0; animation: fadeUp 0.9s 0.58s both;
-}
+.hero-h1 .indent { display: block; padding-left: 72px; }
 .hero-desc {
-  font-size: 15px; color: rgba(255,255,255,0.65);
-  max-width: 420px; line-height: 1.85;
+  font-size: 15px; color: rgba(255,255,255,0.62);
+  max-width: 400px; line-height: 1.9;
+  opacity: 0; animation: fadeUp 0.85s 0.45s both;
 }
-.hero-actions { display: flex; gap: 14px; align-items: center; flex-shrink: 0; }
+.hero-cta-row {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 36px;
+  opacity: 0; animation: fadeUp 0.85s 0.58s both;
+}
+.hero-stats {
+  display: flex; gap: 0;
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  opacity: 0; animation: fadeUp 0.85s 0.72s both;
+}
+.h-stat { padding: 0 32px; border-left: 1px solid rgba(255,255,255,0.12); }
+.h-stat:first-child { border-left: none; padding-left: 0; }
+.h-stat-n {
+  font-family: var(--serif); font-size: 34px; font-weight: 400;
+  color: #fff; line-height: 1;
+}
+.h-stat-n sup { font-size: 14px; color: var(--gold-light); }
+.h-stat-l {
+  font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-top: 6px;
+}
+
+/* Buttons */
 .btn-primary {
   background: var(--gold);
   color: #fff;
@@ -233,6 +259,85 @@ nav.scrolled .nav-cta { color: #fff !important; }
 }
 .btn-secondary:hover .btn-secondary-circle { border-color: var(--gold-light); }
 
+/* Glassmorphism Booking Card */
+.hero-form-card {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  padding: 36px 32px 32px;
+  opacity: 0; animation: fadeUp 0.85s 0.5s both;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.28);
+}
+.hfc-title {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 500;
+  color: #fff; margin-bottom: 6px; line-height: 1.2;
+}
+.hfc-sub {
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  margin-bottom: 24px; letter-spacing: 0.04em;
+}
+.hfc-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); display: block;
+  margin-bottom: 7px; font-weight: 500;
+}
+.hfc-input {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  color: #fff; font-family: var(--sans); font-size: 14px;
+  padding: 13px 16px; outline: none;
+  transition: border-color 0.25s, background 0.25s;
+  margin-bottom: 14px;
+}
+.hfc-input::placeholder { color: rgba(255,255,255,0.32); }
+.hfc-input:focus { border-color: var(--gold-light); background: rgba(255,255,255,0.13); }
+.hfc-select {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7); font-family: var(--sans); font-size: 14px;
+  padding: 13px 16px; outline: none; cursor: pointer;
+  margin-bottom: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.hfc-select option { background: #1C1A19; color: #fff; }
+.hfc-submit {
+  width: 100%;
+  background: var(--gold);
+  color: #fff; border: none;
+  padding: 15px; border-radius: 8px;
+  font-family: var(--sans); font-size: 11.5px;
+  font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.hfc-submit:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+.hfc-note {
+  text-align: center; margin-top: 14px;
+  font-size: 10.5px; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.05em;
+}
+.hfc-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 18px 0 16px;
+}
+.hfc-divider::before, .hfc-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+.hfc-divider span { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
 /* Scroll indicator */
 .scroll-hint {
   position: absolute; bottom: 36px; left: 80px; z-index: 2;
@@ -252,27 +357,6 @@ nav.scrolled .nav-cta { color: #fff !important; }
 @keyframes scrollAnim {
   0%, 100% { opacity: 0.4; transform: scaleY(1); }
   50% { opacity: 1; transform: scaleY(0.6); }
-}
-
-/* Hero stats */
-.hero-stats {
-  display: flex; gap: 0;
-  margin-top: 40px;
-  opacity: 0; animation: fadeUp 0.9s 0.76s both;
-}
-.h-stat {
-  padding: 0 36px; border-left: 1px solid rgba(255,255,255,0.15);
-}
-.h-stat:first-child { border-left: none; padding-left: 0; }
-.h-stat-n {
-  font-family: var(--serif);
-  font-size: 36px; font-weight: 400;
-  color: #fff; line-height: 1;
-}
-.h-stat-n sup { font-size: 16px; color: var(--gold-light); }
-.h-stat-l {
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45); margin-top: 6px;
 }
 
 @keyframes fadeUp {
@@ -436,48 +520,109 @@ nav.scrolled .nav-cta { color: #fff !important; }
 .l-card.featured .l-price { font-size: 26px; }
 
 /* ============================================================
-   AMENITIES SECTION
+   AMENITIES — Bento Grid
    ============================================================ */
 .amenities-wrap {
   background: var(--bg-section);
-  padding: 100px 56px 0;
+  padding: 100px 56px 100px;
 }
-.amenities-grid {
+.bento-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 280px 280px;
-  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 280px 200px 240px;
+  gap: 14px;
   margin-top: 60px;
 }
-.am-cell {
-  border-radius: 10px; overflow: hidden;
-  position: relative;
-}
-.am-cell.tall { grid-row: 1 / 3; }
-.am-img {
+.bento-cell { border-radius: 20px; overflow: hidden; position: relative; }
+.bento-cell.c-1 { grid-column: span 5; grid-row: span 2; }
+.bento-cell.c-2 { grid-column: span 4; grid-row: span 1; }
+.bento-cell.c-3 { grid-column: span 3; grid-row: span 1; }
+.bento-cell.c-4 { grid-column: span 4; grid-row: span 1; }
+.bento-cell.c-5 { grid-column: span 3; grid-row: span 1; }
+.bento-cell.c-6 { grid-column: span 7; grid-row: span 1; }
+.bento-cell.c-7 { grid-column: span 5; grid-row: span 1; }
+.bento-cell.img-cell .b-img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.6s var(--ease), filter 0.4s;
-  filter: brightness(0.78);
+  filter: brightness(0.80);
 }
-.am-cell:hover .am-img { transform: scale(1.05); filter: brightness(0.62); }
-.am-overlay {
+.bento-cell.img-cell:hover .b-img { transform: scale(1.06); filter: brightness(0.65); }
+.b-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+  pointer-events: none;
 }
-.am-label {
-  position: absolute; bottom: 18px; left: 18px;
-  font-family: var(--serif);
-  font-size: 17px; font-weight: 400;
+.b-label {
+  position: absolute; bottom: 20px; left: 22px; right: 22px;
   color: #fff;
 }
-.am-icon-pill {
-  position: absolute; top: 14px; right: 14px;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 50px; padding: 6px 14px;
+.b-label-name {
+  font-family: var(--serif); font-size: 20px; font-weight: 500;
+  line-height: 1.2;
+}
+.b-label-sub { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.08em; }
+.b-pill {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50px; padding: 6px 16px;
   font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
   color: #fff; font-weight: 500;
+}
+.bento-cell.stat-cell {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+}
+.bento-cell.stat-cell:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.bento-cell.gold-cell {
+  background: var(--gold);
+  border: none;
+}
+.b-stat-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--gold-bg); border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.b-stat-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+.bento-cell.gold-cell .b-stat-icon { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.25); }
+.bento-cell.gold-cell .b-stat-icon svg { stroke: #fff; }
+.b-stat-n {
+  font-family: var(--serif); font-size: 42px; font-weight: 400;
+  color: var(--text-primary); line-height: 1;
+}
+.b-stat-n em { font-style: italic; color: var(--gold); }
+.bento-cell.gold-cell .b-stat-n { color: #fff; }
+.bento-cell.gold-cell .b-stat-n em { color: rgba(255,255,255,0.7); }
+.b-stat-label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-secondary); font-weight: 500;
+}
+.bento-cell.gold-cell .b-stat-label { color: rgba(255,255,255,0.7); }
+@media (max-width: 1100px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 240px 180px 200px 180px;
+  }
+  .bento-cell.c-1 { grid-column: span 6; grid-row: span 1; }
+  .bento-cell.c-2 { grid-column: span 3; }
+  .bento-cell.c-3 { grid-column: span 3; }
+  .bento-cell.c-4 { grid-column: span 4; }
+  .bento-cell.c-5 { grid-column: span 2; }
+  .bento-cell.c-6 { grid-column: span 6; }
+  .bento-cell.c-7 { grid-column: span 6; }
+}
+@media (max-width: 768px) {
+  .bento-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .bento-cell.c-1, .bento-cell.c-6 { grid-column: span 2; height: 220px; }
+  .bento-cell.c-2, .bento-cell.c-4 { grid-column: span 1; height: 180px; }
+  .bento-cell.c-3, .bento-cell.c-5, .bento-cell.c-7 { grid-column: span 1; height: 160px; }
 }
 
 /* ============================================================
@@ -667,12 +812,12 @@ nav.scrolled .nav-cta { color: #fff !important; }
 }
 .test-btn:hover { border-color: var(--gold); color: var(--gold); }
 .test-dots { display: flex; gap: 8px; }
-.t-dot {
+.test-dot {
   width: 7px; height: 7px; border-radius: 4px;
   background: var(--border); border: none; cursor: pointer;
   transition: all 0.35s var(--ease); padding: 0;
 }
-.t-dot.active { width: 28px; background: var(--gold); }
+.test-dot.active { width: 28px; background: var(--gold); }
 .test-count {
   margin-left: auto;
   font-family: var(--serif); font-size: 14px; font-style: italic;
@@ -824,7 +969,7 @@ nav.scrolled .nav-cta { color: #fff !important; }
 }
 .cta-bg {
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1600607687939-ce8a6d2fcd97?w=2000&q=80') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=2000&q=80') center/cover no-repeat;
   filter: brightness(0.3) saturate(0.8);
 }
 /* Warm tint, not pure black */
@@ -846,8 +991,11 @@ nav.scrolled .nav-cta { color: #fff !important; }
 }
 .cta-title em { font-style: italic; color: var(--gold-light); }
 .cta-form {
-  display: flex; justify-content: center; gap: 0;
+  display: flex; flex-direction: column; gap: 10px;
   max-width: 520px; margin: 0 auto 16px;
+}
+.cta-form-row {
+  display: flex; gap: 0;
 }
 .cta-input {
   flex: 1;
@@ -858,6 +1006,10 @@ nav.scrolled .nav-cta { color: #fff !important; }
   padding: 16px 22px; outline: none; font-weight: 300;
   border-radius: 4px 0 0 4px;
   transition: border-color 0.25s;
+}
+.cta-input.cta-input-last {
+  border-right: 1px solid rgba(255,255,255,0.25);
+  border-radius: 0 4px 4px 0;
 }
 .cta-input::placeholder { color: rgba(255,255,255,0.4); }
 .cta-input:focus { border-color: var(--gold-light); }
@@ -871,6 +1023,140 @@ nav.scrolled .nav-cta { color: #fff !important; }
 }
 .cta-submit:hover { background: var(--gold-dark); }
 .cta-note { font-size: 11.5px; color: rgba(255,255,255,0.35); letter-spacing: 0.05em; }
+
+/* ============================================================
+   FLOATING CTA BUTTON
+   ============================================================ */
+.float-cta {
+  position: fixed; bottom: 36px; right: 36px; z-index: 400;
+  background: var(--gold); color: #fff;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(201,168,76,0.4);
+  text-decoration: none;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  animation: fadeIn 1s 2s both;
+}
+.float-cta:hover { transform: scale(1.12); box-shadow: 0 12px 36px rgba(201,168,76,0.5); }
+.float-cta svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; }
+.float-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--bg-dark); color: #fff;
+  font-size: 11.5px; white-space: nowrap; padding: 8px 14px;
+  border-radius: 6px; opacity: 0; pointer-events: none;
+  transition: opacity 0.22s;
+}
+.float-tooltip::after {
+  content: ''; position: absolute; left: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent; border-left-color: var(--bg-dark);
+}
+.float-cta:hover .float-tooltip { opacity: 1; }
+
+/* ============================================================
+   APARTMENTS SECTION — Filter + Cards
+   ============================================================ */
+.apartments-section {
+  padding: 110px 56px 120px;
+  background: var(--bg-white);
+}
+.apt-filter-bar {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 48px; margin-bottom: 52px;
+}
+.apt-filter-btn {
+  padding: 10px 24px; border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.22s var(--ease);
+  font-family: var(--sans);
+}
+.apt-filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+.apt-filter-btn.active {
+  background: var(--gold); border-color: var(--gold);
+  color: #fff;
+  box-shadow: var(--shadow-gold);
+}
+.apt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.apt-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  transition: transform 0.32s var(--ease), box-shadow 0.32s var(--ease), border-color 0.32s;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+.apt-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold-pale);
+}
+.apt-img-wrap { position: relative; overflow: hidden; }
+.apt-img {
+  width: 100%; height: 240px; object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease);
+}
+.apt-card:hover .apt-img { transform: scale(1.06); }
+.apt-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--bg-dark); color: var(--gold-light);
+  font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 600; padding: 5px 12px; border-radius: 50px;
+}
+.apt-area-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  font-size: 12px; font-weight: 600;
+  color: var(--text-primary);
+  padding: 5px 12px; border-radius: 6px;
+}
+.apt-info { padding: 22px 24px 26px; }
+.apt-type {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 8px;
+}
+.apt-name {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  color: var(--text-primary); margin-bottom: 12px; line-height: 1.2;
+}
+.apt-specs {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.apt-spec {
+  font-size: 12.5px; color: var(--text-secondary);
+  display: flex; align-items: center; gap: 5px;
+}
+.apt-spec svg { stroke: var(--gold); }
+.apt-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.apt-price {
+  font-family: var(--serif); font-size: 24px; font-weight: 500;
+  color: var(--gold); line-height: 1;
+}
+.apt-price span { font-size: 12px; color: var(--text-secondary); font-family: var(--sans); margin-left: 4px; }
+.apt-btn {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-primary); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.22s;
+}
+.apt-btn:hover { color: var(--gold); }
+.apt-btn svg { transition: transform 0.22s; }
+.apt-btn:hover svg { transform: translateX(3px); }
 
 /* ============================================================
    FOOTER
@@ -932,11 +1218,10 @@ footer {
   .testimonials-section .test-header, .testimonials-section .test-controls,
   .blog-section, .process-section, .faq-section, .cta-section,
   footer, .amenities-wrap { padding-left: 32px !important; padding-right: 32px !important; }
-  .hero-content { padding-left: 48px; }
+  .hero-content { grid-template-columns: 1fr; padding: 0 40px 80px; }
+  .hero-form-card { display: none; }
   .listing-grid { grid-template-columns: 1fr 1fr; }
   .l-card.featured { grid-column: 1 / 3; grid-row: auto; }
-  .amenities-grid { grid-template-columns: 1fr 1fr; }
-  .am-cell.tall { grid-row: auto; }
   .features-section { grid-template-columns: 1fr; }
   .feat-visual { min-height: 400px; }
   .stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -948,7 +1233,6 @@ footer {
   .nav-links { display: none; }
   .hero-h1 .indent { padding-left: 0; }
   .hero-content { padding: 0 24px 72px; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; }
   .hero-stats { display: none; }
   .listing-grid, .blog-grid, .process-grid { grid-template-columns: 1fr; }
   .l-card.featured, .b-card.featured { grid-column: auto; grid-row: auto; }
@@ -984,17 +1268,18 @@ footer {
   <div class="hero-gradient"></div>
 
   <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-bar"></div>
-      <span>Sany Holding &middot; Luxury Real Estate &middot; Việt Nam</span>
-    </div>
-    <h1 class="hero-h1">
-      Nơi đẳng cấp<br>
-      <span class="indent">trở thành <em>nhà</em></span>
-    </h1>
-    <div class="hero-bottom">
+    <!-- LEFT: Headline -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-bar"></div>
+        <span>Sany Holding &middot; Luxury Real Estate &middot; Việt Nam</span>
+      </div>
+      <h1 class="hero-h1">
+        Nơi đẳng cấp<br>
+        <span class="indent">trở thành <em>nhà</em></span>
+      </h1>
       <p class="hero-desc">Chúng tôi kiến tạo những không gian sống vượt thời gian — nơi mỗi chi tiết được chắt lọc để nâng tầm cuộc sống của bạn.</p>
-      <div class="hero-actions">
+      <div class="hero-cta-row">
         <a href="#listings" class="btn-primary">Khám Phá Dự Án</a>
         <a href="#process" class="btn-secondary">
           <div class="btn-secondary-circle">
@@ -1003,20 +1288,30 @@ footer {
           Xem quy trình
         </a>
       </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="h-stat-n">1,200<sup>+</sup></div><div class="h-stat-l">Giao Dịch</div></div>
+        <div class="h-stat"><div class="h-stat-n">60K<sup>tỷ</sup></div><div class="h-stat-l">Tổng Giá Trị</div></div>
+        <div class="h-stat"><div class="h-stat-n">15<sup>+</sup></div><div class="h-stat-l">Năm Kinh Nghiệm</div></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="h-stat">
-        <div class="h-stat-n">1,200<sup>+</sup></div>
-        <div class="h-stat-l">Giao Dịch</div>
+
+    <!-- RIGHT: Booking Form -->
+    <div class="hero-form-card">
+      <div class="hfc-title">Đặt Lịch Xem Dự Án</div>
+      <div class="hfc-sub">Miễn phí &middot; Không ràng buộc &middot; Phản hồi trong 2 giờ</div>
+      <label class="hfc-label">Họ và tên</label>
+      <input id="hfc-name" type="text" class="hfc-input" placeholder="Nguyễn Văn A..." required>
+      <label class="hfc-label">Số điện thoại</label>
+      <input id="hfc-phone" type="tel" class="hfc-input" placeholder="0901 234 567" required>
+      <label class="hfc-label">Email</label>
+      <input id="hfc-email" type="email" class="hfc-input" placeholder="email@example.com">
+      <button id="hfc-btn" class="hfc-submit">Đặt Lịch Miễn Phí →</button>
+      <div id="hfc-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;text-align:center;"></div>
+      <div class="hfc-divider"><span>hoặc liên hệ trực tiếp</span></div>
+      <div style="text-align:center">
+        <a href="tel:02838228888" style="font-family:var(--serif);font-size:20px;color:var(--gold-light);text-decoration:none;font-weight:500;letter-spacing:0.05em;">+84 28 3822 8888</a>
       </div>
-      <div class="h-stat">
-        <div class="h-stat-n">60K<sup>tỷ</sup></div>
-        <div class="h-stat-l">Tổng Giá Trị</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-n">15<sup>+</sup></div>
-        <div class="h-stat-l">Năm Kinh Nghiệm</div>
-      </div>
+      <p class="hfc-note">🔒 Thông tin bảo mật tuyệt đối &middot; Không spam</p>
     </div>
   </div>
 
@@ -1139,7 +1434,7 @@ footer {
 
     <a href="#" class="l-card reveal d3">
       <div class="l-img-wrap">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6d2fcd97?w=800&q=85" alt="Palm Crest" class="l-img">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=85" alt="Palm Crest" class="l-img">
         <span class="l-tag">Giảm Giá</span>
       </div>
       <div class="l-info">
@@ -1161,43 +1456,61 @@ footer {
     <div class="section-label">Tiện Ích Đẳng Cấp</div>
     <h2 class="section-title">Sống trọn vẹn từng <em>khoảnh khắc</em></h2>
   </div>
-  <div class="amenities-grid">
-    <div class="am-cell tall reveal">
-      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85" alt="Rooftop Pool" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">Infinity Pool</span>
-      <div class="am-label">Rooftop Infinity Pool</div>
+
+  <div class="bento-grid">
+
+    <div class="bento-cell c-1 img-cell reveal">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85" alt="Pool" class="b-img" loading="lazy">
+      <div class="b-overlay"></div>
+      <span class="b-pill">Sky Pool</span>
+      <div class="b-label"><div class="b-label-name">Infinity Rooftop Pool</div><div class="b-label-sub">Tầng 50 · View 360° thành phố</div></div>
     </div>
-    <div class="am-cell reveal d1">
-      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=85" alt="Gym" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">Fitness</span>
-      <div class="am-label">Fitness Center 24/7</div>
+
+    <div class="bento-cell c-2 img-cell reveal d1">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=85" alt="Gym" class="b-img" loading="lazy">
+      <div class="b-overlay"></div>
+      <span class="b-pill">Fitness</span>
+      <div class="b-label"><div class="b-label-name">Fitness Center 24/7</div></div>
     </div>
-    <div class="am-cell reveal d2">
-      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700&q=85" alt="Living Room" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">Interior</span>
-      <div class="am-label">Premium Interiors</div>
+
+    <div class="bento-cell c-3 stat-cell gold-cell reveal d2">
+      <div class="b-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div>
+        <div class="b-stat-n">40<em>+</em></div>
+        <div class="b-stat-label">Tiện Ích Cao Cấp</div>
+      </div>
     </div>
-    <div class="am-cell reveal d3">
-      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=85" alt="Bedroom" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">Suite</span>
-      <div class="am-label">Master Suites</div>
+
+    <div class="bento-cell c-4 img-cell reveal d1">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85" alt="Dining" class="b-img" loading="lazy">
+      <div class="b-overlay"></div>
+      <span class="b-pill">Dining</span>
+      <div class="b-label"><div class="b-label-name">Sky Lounge &amp; Restaurant</div></div>
     </div>
-    <div class="am-cell reveal d1">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85" alt="Restaurant" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">Dining</span>
-      <div class="am-label">Sky Lounge &amp; Dining</div>
+
+    <div class="bento-cell c-5 stat-cell reveal d2">
+      <div class="b-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div>
+        <div class="b-stat-n">24<em>/7</em></div>
+        <div class="b-stat-label">An Ninh Bảo Vệ</div>
+      </div>
     </div>
-    <div class="am-cell reveal d2">
-      <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=85" alt="City View" class="am-img">
-      <div class="am-overlay"></div>
-      <span class="am-icon-pill">View</span>
-      <div class="am-label">City Skyline Views</div>
+
+    <div class="bento-cell c-6 img-cell reveal d1">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&q=85" alt="Lobby" class="b-img" loading="lazy">
+      <div class="b-overlay"></div>
+      <span class="b-pill">Grand Lobby</span>
+      <div class="b-label"><div class="b-label-name">Sảnh Đón Khách 5 Sao</div><div class="b-label-sub">Nội thất nhập khẩu · Concierge 24/7</div></div>
     </div>
+
+    <div class="bento-cell c-7 stat-cell reveal d2">
+      <div class="b-stat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div>
+        <div class="b-stat-n" style="font-size:32px">500<em>+</em></div>
+        <div class="b-stat-label">Chỗ Đậu Xe Hầm</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1224,6 +1537,156 @@ footer {
     </div>
   </div>
 </div>
+
+<!-- ============================================================
+     APARTMENTS / CĂN HỘ MẪU
+     ============================================================ -->
+<section class="apartments-section" id="apartments">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Căn Hộ Mẫu</div>
+      <h2 class="section-title">Tìm không gian<br>sống <em>lý tưởng</em></h2>
+    </div>
+    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:280px;text-align:right;line-height:1.85">Mỗi căn hộ được thiết kế theo chuẩn luxury — nơi thẩm mỹ và tiện nghi hòa làm một.</p>
+  </div>
+
+  <div class="apt-filter-bar reveal">
+    <button class="apt-filter-btn active" data-filter="all">Tất Cả</button>
+    <button class="apt-filter-btn" data-filter="studio">Studio</button>
+    <button class="apt-filter-btn" data-filter="1pn">1 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="2pn">2 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="3pn">3 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="penthouse">Penthouse</button>
+  </div>
+
+  <div class="apt-grid">
+    <div class="apt-card reveal" data-cat="studio">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Studio Loft" class="apt-img" loading="lazy">
+        <span class="apt-badge">Studio</span>
+        <span class="apt-area-badge">45 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">Studio · Tầng 12–28</div>
+        <div class="apt-name">Urban Studio Loft</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> Sảnh khách + Bếp</span>
+          <span class="apt-spec">1 WC</span>
+          <span class="apt-spec">45 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">8 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="apt-card reveal d1" data-cat="1pn">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=80" alt="1 Phòng Ngủ" class="apt-img" loading="lazy">
+        <span class="apt-badge">1 Phòng Ngủ</span>
+        <span class="apt-area-badge">68 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">1 PN · Tầng 15–35</div>
+        <div class="apt-name">Serene One-Bed</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 1 Phòng Ngủ</span>
+          <span class="apt-spec">2 WC</span>
+          <span class="apt-spec">68 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">14 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="apt-card reveal d2" data-cat="2pn">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" alt="2 Phòng Ngủ" class="apt-img" loading="lazy">
+        <span class="apt-badge">2 Phòng Ngủ</span>
+        <span class="apt-area-badge">105 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">2 PN · Tầng 18–40</div>
+        <div class="apt-name">Grand Two-Bed Residence</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 2 Phòng Ngủ</span>
+          <span class="apt-spec">2 WC</span>
+          <span class="apt-spec">105 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">22 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="apt-card reveal d1" data-cat="3pn">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="3 Phòng Ngủ" class="apt-img" loading="lazy">
+        <span class="apt-badge">3 Phòng Ngủ</span>
+        <span class="apt-area-badge">158 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">3 PN · Tầng 20–45</div>
+        <div class="apt-name">Premium Family Suite</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 3 Phòng Ngủ</span>
+          <span class="apt-spec">3 WC</span>
+          <span class="apt-spec">158 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">38 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="apt-card reveal d2" data-cat="penthouse">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80" alt="Penthouse" class="apt-img" loading="lazy">
+        <span class="apt-badge">Penthouse</span>
+        <span class="apt-area-badge">320 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">Penthouse · Tầng 45–50</div>
+        <div class="apt-name">Sky Penthouse Collection</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 4 Phòng Ngủ</span>
+          <span class="apt-spec">4 WC</span>
+          <span class="apt-spec">320 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">95 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="apt-card reveal d3" data-cat="2pn">
+      <div class="apt-img-wrap">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Sky Loft" class="apt-img" loading="lazy">
+        <span class="apt-badge">2 Phòng Ngủ</span>
+        <span class="apt-area-badge">128 m²</span>
+      </div>
+      <div class="apt-info">
+        <div class="apt-type">2 PN Duplex · Tầng 25–38</div>
+        <div class="apt-name">Sky Duplex Loft</div>
+        <div class="apt-specs">
+          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 2 Phòng Ngủ</span>
+          <span class="apt-spec">3 WC</span>
+          <span class="apt-spec">128 m²</span>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price">28 tỷ<span>từ</span></div>
+          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================================
      FEATURES / ACCORDION
@@ -1382,9 +1845,9 @@ footer {
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
     <div class="test-dots">
-      <button class="t-dot active" data-i="0" aria-label="Slide 1"></button>
-      <button class="t-dot" data-i="1" aria-label="Slide 2"></button>
-      <button class="t-dot" data-i="2" aria-label="Slide 3"></button>
+      <button class="test-dot active" data-i="0" aria-label="Slide 1"></button>
+      <button class="test-dot" data-i="1" aria-label="Slide 2"></button>
+      <button class="test-dot" data-i="2" aria-label="Slide 3"></button>
     </div>
     <button class="test-btn" id="t-next" aria-label="Tiếp">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg>
@@ -1533,8 +1996,15 @@ footer {
     <span class="cta-eyebrow">Bắt Đầu Hành Trình Của Bạn</span>
     <h2 class="cta-title">Tổ ấm mơ ước<br>của bạn <em>đang chờ</em></h2>
     <div class="cta-form">
-      <input type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn...">
-      <button class="cta-submit">Tư Vấn Miễn Phí</button>
+      <div class="cta-form-row">
+        <input id="cta-name" type="text" class="cta-input" placeholder="Họ và tên của bạn..." required>
+        <input id="cta-phone" type="tel" class="cta-input cta-input-last" placeholder="Số điện thoại..." required>
+      </div>
+      <div class="cta-form-row">
+        <input id="cta-email" type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn...">
+        <button id="cta-btn" class="cta-submit">Tư Vấn Miễn Phí</button>
+      </div>
+      <div id="cta-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;text-align:center;color:#fff;"></div>
     </div>
     <p class="cta-note">&#128274; Thông tin bảo mật tuyệt đối &middot; Không spam &middot; Phản hồi trong 2 giờ</p>
   </div>
@@ -1662,7 +2132,7 @@ document.querySelectorAll('.fq-item').forEach(item => {
 let cur = 0;
 const total = 3;
 const track = document.getElementById('test-track');
-const dots  = document.querySelectorAll('.t-dot');
+const dots  = document.querySelectorAll('.test-dot');
 const count = document.getElementById('t-count');
 
 function goTo(n) {
@@ -1688,6 +2158,128 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => io.observe(el));
+
+/* APARTMENT FILTER */
+const filterBtns = document.querySelectorAll('.apt-filter-btn');
+const aptCards   = document.querySelectorAll('.apt-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.filter;
+    aptCards.forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? 'block' : 'none';
+    });
+  });
+});
+
+/* COUNTER ANIMATION for Stats Strip */
+const statsIo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-n').forEach(el => {
+        const em = el.querySelector('em');
+        const suffix = em ? em.textContent : '';
+        const num = Number.parseFloat(el.textContent.replaceAll(/[^\d.]/g, ''));
+        if (Number.isNaN(num)) return;
+        let start = 0;
+        const dur = 1800;
+        const step = ts => {
+          if (!start) start = ts;
+          const prog = Math.min((ts - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - prog, 3);
+          const val  = Math.floor(ease * num);
+          el.innerHTML = val.toLocaleString() + (em ? '<em>' + suffix + '</em>' : '');
+          if (prog < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+      statsIo.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stats-strip').forEach(el => statsIo.observe(el));
+
+/* ============================================================
+   GOOGLE SHEETS INTEGRATION
+   ⚠️ Thay YOUR_GAS_URL bằng URL Web App sau khi deploy GAS
+   ============================================================ */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxHw6pH-BmxLasThYjpJfbamStwIzXcNL0cXLEaaLXCB6neCFesLIJ4-E-tsTOc0h43/exec';
+
+async function submitToSheet(payload, btnEl, msgEl) {
+  // Kiểm tra field bắt buộc
+  if (!payload.name || !payload.phone) {
+    showMsg(msgEl, '⚠️ Vui lòng nhập họ tên và số điện thoại.', 'warn');
+    return;
+  }
+
+  // Disable button, hiện loading
+  const origText = btnEl.textContent;
+  btnEl.disabled = true;
+  btnEl.textContent = 'Đang gửi...';
+
+  try {
+    const res  = await fetch(GAS_URL, {
+      method : 'POST',
+      mode   : 'no-cors',           // GAS yêu cầu no-cors
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify(payload)
+    });
+    // no-cors không đọc được response body — coi như thành công
+    showMsg(msgEl, '✅ Đặt lịch thành công! Chúng tôi sẽ liên hệ trong 2 giờ.', 'ok');
+    // Reset form
+    btnEl.closest('.hero-form-card, .cta-form')
+         .querySelectorAll('input')
+         .forEach(i => i.value = '');
+  } catch (err) {
+    showMsg(msgEl, '❌ Có lỗi xảy ra, vui lòng thử lại hoặc gọi hotline.', 'err');
+  } finally {
+    btnEl.disabled  = false;
+    btnEl.textContent = origText;
+  }
+}
+
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.style.display = 'block';
+  el.style.background = type === 'ok'
+    ? 'rgba(34,197,94,0.18)'
+    : type === 'warn'
+    ? 'rgba(234,179,8,0.18)'
+    : 'rgba(239,68,68,0.18)';
+  el.style.color = type === 'ok' ? '#86efac' : type === 'warn' ? '#fde047' : '#fca5a5';
+  el.style.border = '1px solid ' + (type === 'ok' ? 'rgba(34,197,94,0.35)' : type === 'warn' ? 'rgba(234,179,8,0.35)' : 'rgba(239,68,68,0.35)');
+  // Tự ẩn sau 6 giây
+  setTimeout(() => { el.style.display = 'none'; }, 6000);
+}
+
+/* --- Hero form submit --- */
+document.getElementById('hfc-btn').addEventListener('click', () => {
+  submitToSheet({
+    name  : document.getElementById('hfc-name').value.trim(),
+    phone : document.getElementById('hfc-phone').value.trim(),
+    email : document.getElementById('hfc-email').value.trim(),
+    source: 'hero-form',
+    ua    : navigator.userAgent
+  }, document.getElementById('hfc-btn'), document.getElementById('hfc-msg'));
+});
+
+/* --- CTA form submit --- */
+document.getElementById('cta-btn').addEventListener('click', () => {
+  submitToSheet({
+    name  : document.getElementById('cta-name').value.trim(),
+    phone : document.getElementById('cta-phone').value.trim(),
+    email : document.getElementById('cta-email').value.trim(),
+    source: 'cta-form',
+    ua    : navigator.userAgent
+  }, document.getElementById('cta-btn'), document.getElementById('cta-msg'));
+});
 </script>
+
+<a href="#contact" class="float-cta" aria-label="Liên hệ ngay">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <span class="float-tooltip">Tư vấn miễn phí</span>
+</a>
 </body>
 </html>
