@@ -414,18 +414,106 @@ nav.scrolled .nav-cta { color: #fff !important; }
   max-width: 480px; line-height: 1.85; margin-top: 16px;
 }
 
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
 .reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
-.reveal-l { opacity: 0; transform: translateX(-28px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+
+.reveal-l {
+  opacity: 0; transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 .reveal-l.in { opacity: 1; transform: translateX(0); }
-.reveal-r { opacity: 0; transform: translateX(28px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+
+.reveal-r {
+  opacity: 0; transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 .reveal-r.in { opacity: 1; transform: translateX(0); }
-.d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; }
-.d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
-.d5 { transition-delay: 0.40s; } .d6 { transition-delay: 0.48s; }
+
+/* Stagger delay classes */
+.d1 { transition-delay: 0.10s; } .d2 { transition-delay: 0.20s; }
+.d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
+.d5 { transition-delay: 0.50s; } .d6 { transition-delay: 0.60s; }
+
+/* Accessibility: tắt animation nếu user bật reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-l, .reveal-r {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   CUSTOM CURSOR (chỉ hiện trên desktop có fine pointer)
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  /* Ẩn cursor mặc định trên toàn trang */
+  *, *::before, *::after { cursor: none !important; }
+
+  #cursor-dot {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0;                        /* ẩn đến khi mouse move */
+    transition: width 0.25s var(--ease-spring),
+                height 0.25s var(--ease-spring),
+                background 0.25s,
+                opacity 0.3s,
+                transform 0.15s;
+    will-change: left, top;
+  }
+
+  #cursor-ring {
+    position: fixed;
+    width: 38px; height: 38px;
+    border: 1.5px solid rgba(201,168,76,0.75);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    mix-blend-mode: difference;
+    transition: width 0.4s var(--ease-spring),
+                height 0.4s var(--ease-spring),
+                border-color 0.3s,
+                opacity 0.3s;
+    will-change: left, top;
+  }
+
+  /* Hover state — phóng to ring + đổi màu dot */
+  body.cursor-hover #cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--gold-light);
+  }
+  body.cursor-hover #cursor-ring {
+    width: 60px; height: 60px;
+    border-color: rgba(224,196,122,0.9);
+  }
+
+  /* Click state — thu nhỏ */
+  body.cursor-click #cursor-dot {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  body.cursor-click #cursor-ring {
+    width: 28px; height: 28px;
+  }
+}
 
 /* ============================================================
    LISTINGS SECTION
@@ -1246,6 +1334,10 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- CUSTOM CURSOR (desktop only) -->
+<div id="cursor-dot"  aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
 <!-- NAVBAR -->
 <nav id="nav">
@@ -2147,15 +2239,24 @@ document.getElementById('t-next').addEventListener('click', () => goTo(cur + 1))
 dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
 const autoPlay = setInterval(() => goTo(cur + 1), 7000);
 
-/* SCROLL REVEAL (IntersectionObserver) */
+/* ============================================================
+   SCROLL REVEAL (IntersectionObserver — nâng cấp)
+   ============================================================ */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.classList.add('in');
+      if (prefersReduced) {
+        e.target.style.opacity   = '1';
+        e.target.style.transform = 'none';
+      } else {
+        e.target.classList.add('in');
+      }
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => io.observe(el));
 
@@ -2203,39 +2304,32 @@ document.querySelectorAll('.stats-strip').forEach(el => statsIo.observe(el));
 
 /* ============================================================
    GOOGLE SHEETS INTEGRATION
-   ⚠️ Thay YOUR_GAS_URL bằng URL Web App sau khi deploy GAS
    ============================================================ */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxHw6pH-BmxLasThYjpJfbamStwIzXcNL0cXLEaaLXCB6neCFesLIJ4-E-tsTOc0h43/exec';
 
 async function submitToSheet(payload, btnEl, msgEl) {
-  // Kiểm tra field bắt buộc
   if (!payload.name || !payload.phone) {
-    showMsg(msgEl, '⚠️ Vui lòng nhập họ tên và số điện thoại.', 'warn');
+    showMsg(msgEl, '⚠️ Vui l\xf2ng nhập họ t\xean v\xe0 số điện thoại.', 'warn');
     return;
   }
-
-  // Disable button, hiện loading
   const origText = btnEl.textContent;
   btnEl.disabled = true;
   btnEl.textContent = 'Đang gửi...';
-
   try {
-    const res  = await fetch(GAS_URL, {
+    await fetch(GAS_URL, {
       method : 'POST',
-      mode   : 'no-cors',           // GAS yêu cầu no-cors
+      mode   : 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body   : JSON.stringify(payload)
     });
-    // no-cors không đọc được response body — coi như thành công
-    showMsg(msgEl, '✅ Đặt lịch thành công! Chúng tôi sẽ liên hệ trong 2 giờ.', 'ok');
-    // Reset form
+    showMsg(msgEl, '✅ Đặt lịch th\xe0nh c\xf4ng! Ch\xfang t\xf4i sẽ li\xean hệ trong 2 giờ.', 'ok');
     btnEl.closest('.hero-form-card, .cta-form')
          .querySelectorAll('input')
          .forEach(i => i.value = '');
   } catch (err) {
-    showMsg(msgEl, '❌ Có lỗi xảy ra, vui lòng thử lại hoặc gọi hotline.', 'err');
+    showMsg(msgEl, '❌ C\xf3 lỗi xảy ra, vui l\xf2ng thử lại hoặc gọi hotline.', 'err');
   } finally {
-    btnEl.disabled  = false;
+    btnEl.disabled    = false;
     btnEl.textContent = origText;
   }
 }
@@ -2248,13 +2342,12 @@ function showMsg(el, text, type) {
     : type === 'warn'
     ? 'rgba(234,179,8,0.18)'
     : 'rgba(239,68,68,0.18)';
-  el.style.color = type === 'ok' ? '#86efac' : type === 'warn' ? '#fde047' : '#fca5a5';
+  el.style.color  = type === 'ok' ? '#86efac' : type === 'warn' ? '#fde047' : '#fca5a5';
   el.style.border = '1px solid ' + (type === 'ok' ? 'rgba(34,197,94,0.35)' : type === 'warn' ? 'rgba(234,179,8,0.35)' : 'rgba(239,68,68,0.35)');
-  // Tự ẩn sau 6 giây
   setTimeout(() => { el.style.display = 'none'; }, 6000);
 }
 
-/* --- Hero form submit --- */
+/* Hero form */
 document.getElementById('hfc-btn').addEventListener('click', () => {
   submitToSheet({
     name  : document.getElementById('hfc-name').value.trim(),
@@ -2265,7 +2358,7 @@ document.getElementById('hfc-btn').addEventListener('click', () => {
   }, document.getElementById('hfc-btn'), document.getElementById('hfc-msg'));
 });
 
-/* --- CTA form submit --- */
+/* CTA form */
 document.getElementById('cta-btn').addEventListener('click', () => {
   submitToSheet({
     name  : document.getElementById('cta-name').value.trim(),
@@ -2275,11 +2368,60 @@ document.getElementById('cta-btn').addEventListener('click', () => {
     ua    : navigator.userAgent
   }, document.getElementById('cta-btn'), document.getElementById('cta-msg'));
 });
+
+/* ============================================================
+   CUSTOM CURSOR (desktop only — fine pointer)
+   ============================================================ */
+(function initCursor() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
+  let visible = false;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!visible) {
+      visible = true;
+      dot.style.opacity  = '1';
+      ring.style.opacity = '1';
+      ringX = mouseX; ringY = mouseY;
+    }
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  (function animateRing() {
+    const lerp = 0.10;
+    ringX += (mouseX - ringX) * lerp;
+    ringY += (mouseY - ringY) * lerp;
+    ring.style.left = ringX.toFixed(2) + 'px';
+    ring.style.top  = ringY.toFixed(2) + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  const HOVER_SEL = 'a, button, .l-card, .b-card, .apt-card, .acc-item, .bento-cell, .f-soc';
+  document.querySelectorAll(HOVER_SEL).forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+  document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0'; ring.style.opacity = '0'; visible = false;
+  });
+})();
 </script>
 
-<a href="#contact" class="float-cta" aria-label="Liên hệ ngay">
+<a href="#contact" class="float-cta" aria-label="Li&#234;n h&#7879; ngay">
   <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-  <span class="float-tooltip">Tư vấn miễn phí</span>
+  <span class="float-tooltip">T&#432; v&#7845;n mi&#7877;n ph&#237;</span>
 </a>
 </body>
 </html>
