@@ -444,6 +444,29 @@ nav.scrolled .nav-cta { color: #fff !important; }
 .d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
 .d5 { transition-delay: 0.50s; } .d6 { transition-delay: 0.60s; }
 
+/* ============================================================
+   LANG TOGGLE BUTTON
+   ============================================================ */
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  color: var(--text-on-dark);
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+  text-transform: uppercase;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+nav.scrolled .lang-btn { color: var(--text-secondary); border-color: var(--border); }
+nav.scrolled .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+
 /* Accessibility: tắt animation nếu user bật reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-l, .reveal-r {
@@ -1343,13 +1366,14 @@ footer {
 <nav id="nav">
   <a href="#" class="nav-logo">SANY<span class="nav-logo-dot"></span>HOLDING</a>
   <ul class="nav-links">
-    <li><a href="#listings">Dự Án</a></li>
-    <li><a href="#amenities">Tiện Ích</a></li>
-    <li><a href="#features">Dịch Vụ</a></li>
+    <li><a href="#listings" data-en="Properties">Dự Án</a></li>
+    <li><a href="#amenities" data-en="Amenities">Tiện Ích</a></li>
+    <li><a href="#features" data-en="Services">Dịch Vụ</a></li>
     <li><a href="#blog">Insights</a></li>
-    <li><a href="#process">Quy Trình</a></li>
-    <li><a href="#contact" class="nav-cta">Tư Vấn Miễn Phí</a></li>
+    <li><a href="#process" data-en="Process">Quy Trình</a></li>
+    <li><a href="#contact" class="nav-cta" data-en="Free Consultation">Tư Vấn Miễn Phí</a></li>
   </ul>
+  <button id="lang-toggle" class="lang-btn" data-lang="vi">EN</button>
 </nav>
 
 <!-- ============================================================
@@ -1364,46 +1388,46 @@ footer {
     <div class="hero-left">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-bar"></div>
-        <span>Sany Holding &middot; Luxury Real Estate &middot; Việt Nam</span>
+        <span data-en="Sany Holding &middot; Luxury Real Estate &middot; Vietnam">Sany Holding &middot; Luxury Real Estate &middot; Việt Nam</span>
       </div>
       <h1 class="hero-h1">
-        Nơi đẳng cấp<br>
-        <span class="indent">trở thành <em>nhà</em></span>
+        <span data-en="Where prestige becomes &lt;em&gt;home&lt;/em&gt;">Nơi đẳng cấp<br>
+        <span class="indent">trở thành <em>nhà</em></span></span>
       </h1>
-      <p class="hero-desc">Chúng tôi kiến tạo những không gian sống vượt thời gian — nơi mỗi chi tiết được chắt lọc để nâng tầm cuộc sống của bạn.</p>
+      <p class="hero-desc" data-en="We craft timeless living spaces — where every detail is refined to elevate your way of life.">Chúng tôi kiến tạo những không gian sống vượt thời gian — nơi mỗi chi tiết được chắt lọc để nâng tầm cuộc sống của bạn.</p>
       <div class="hero-cta-row">
-        <a href="#listings" class="btn-primary">Khám Phá Dự Án</a>
+        <a href="#listings" class="btn-primary" data-en="Explore Projects">Khám Phá Dự Án</a>
         <a href="#process" class="btn-secondary">
           <div class="btn-secondary-circle">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-          Xem quy trình
+          <span data-en="See process">Xem quy trình</span>
         </a>
       </div>
       <div class="hero-stats">
-        <div class="h-stat"><div class="h-stat-n">1,200<sup>+</sup></div><div class="h-stat-l">Giao Dịch</div></div>
-        <div class="h-stat"><div class="h-stat-n">60K<sup>tỷ</sup></div><div class="h-stat-l">Tổng Giá Trị</div></div>
-        <div class="h-stat"><div class="h-stat-n">15<sup>+</sup></div><div class="h-stat-l">Năm Kinh Nghiệm</div></div>
+        <div class="h-stat"><div class="h-stat-n">1,200<sup>+</sup></div><div class="h-stat-l" data-en="Transactions">Giao Dịch</div></div>
+        <div class="h-stat"><div class="h-stat-n">60K<sup>tỷ</sup></div><div class="h-stat-l" data-en="Total Value">Tổng Giá Trị</div></div>
+        <div class="h-stat"><div class="h-stat-n">15<sup>+</sup></div><div class="h-stat-l" data-en="Years of Experience">Năm Kinh Nghiệm</div></div>
       </div>
     </div>
 
     <!-- RIGHT: Booking Form -->
     <div class="hero-form-card">
-      <div class="hfc-title">Đặt Lịch Xem Dự Án</div>
-      <div class="hfc-sub">Miễn phí &middot; Không ràng buộc &middot; Phản hồi trong 2 giờ</div>
-      <label class="hfc-label">Họ và tên</label>
-      <input id="hfc-name" type="text" class="hfc-input" placeholder="Nguyễn Văn A..." required>
-      <label class="hfc-label">Số điện thoại</label>
-      <input id="hfc-phone" type="tel" class="hfc-input" placeholder="0901 234 567" required>
-      <label class="hfc-label">Email</label>
+      <div class="hfc-title" data-en="Schedule a Viewing">Đặt Lịch Xem Dự Án</div>
+      <div class="hfc-sub" data-en="Free &middot; No obligation &middot; Response within 2 hours">Miễn phí &middot; Không ràng buộc &middot; Phản hồi trong 2 giờ</div>
+      <label class="hfc-label" data-en="Full Name">Họ và tên</label>
+      <input id="hfc-name" type="text" class="hfc-input" placeholder="Nguyễn Văn A..." data-ph-en="Full Name..." required>
+      <label class="hfc-label" data-en="Phone Number">Số điện thoại</label>
+      <input id="hfc-phone" type="tel" class="hfc-input" placeholder="0901 234 567" data-ph-en="+84 901 234 567" required>
+      <label class="hfc-label" data-en="Email">Email</label>
       <input id="hfc-email" type="email" class="hfc-input" placeholder="email@example.com">
-      <button id="hfc-btn" class="hfc-submit">Đặt Lịch Miễn Phí →</button>
+      <button id="hfc-btn" class="hfc-submit" data-en="Book Free Viewing →">Đặt Lịch Miễn Phí →</button>
       <div id="hfc-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;text-align:center;"></div>
-      <div class="hfc-divider"><span>hoặc liên hệ trực tiếp</span></div>
+      <div class="hfc-divider"><span data-en="or contact us directly">hoặc liên hệ trực tiếp</span></div>
       <div style="text-align:center">
         <a href="tel:02838228888" style="font-family:var(--serif);font-size:20px;color:var(--gold-light);text-decoration:none;font-weight:500;letter-spacing:0.05em;">+84 28 3822 8888</a>
       </div>
-      <p class="hfc-note">🔒 Thông tin bảo mật tuyệt đối &middot; Không spam</p>
+      <p class="hfc-note" data-en="🔒 Strictly confidential &middot; No spam">🔒 Thông tin bảo mật tuyệt đối &middot; Không spam</p>
     </div>
   </div>
 
@@ -1437,12 +1461,12 @@ footer {
 <section class="listings-section" id="listings">
   <div class="section-header reveal">
     <div>
-      <div class="section-label">Danh Mục Tinh Chọn</div>
-      <h2 class="section-title">Những ngôi nhà<br>được <em>chọn lọc</em></h2>
+      <div class="section-label" data-en="Curated Listings">Danh Mục Tinh Chọn</div>
+      <h2 class="section-title" data-en="Homes carefully &lt;em&gt;selected&lt;/em&gt;">Những ngôi nhà<br>được <em>chọn lọc</em></h2>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px">
-      <a href="#" class="view-all">Xem tất cả dự án</a>
-      <p style="font-size:13px;color:var(--text-secondary);max-width:240px;text-align:right;line-height:1.7">Mỗi bất động sản được kiểm định kỹ lưỡng về pháp lý và chất lượng.</p>
+      <a href="#" class="view-all" data-en="View all properties">Xem tất cả dự án</a>
+      <p style="font-size:13px;color:var(--text-secondary);max-width:240px;text-align:right;line-height:1.7" data-en="Every property is thoroughly vetted for legal compliance and quality.">Mỗi bất động sản được kiểm định kỹ lưỡng về pháp lý và chất lượng.</p>
     </div>
   </div>
 
@@ -1452,19 +1476,19 @@ footer {
     <a href="#" class="l-card featured reveal">
       <div class="l-img-wrap">
         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=85" alt="The Meridian" class="l-img">
-        <span class="l-tag">Nổi Bật</span>
+        <span class="l-tag" data-en="Featured">Nổi Bật</span>
       </div>
       <div class="l-info">
         <div class="l-name">The Meridian</div>
         <div class="l-location">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Quận 1, TP. Hồ Chí Minh
+          Quận 1, Ho Chi Minh City
         </div>
         <hr class="l-divider">
         <div class="l-specs">
           <span class="l-spec">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg>
-            4 Phòng Ngủ
+            4 Bedrooms
           </span>
           <span class="l-spec">3 WC</span>
           <span class="l-spec">320 m²</span>
@@ -1476,39 +1500,39 @@ footer {
     <a href="#" class="l-card reveal d1">
       <div class="l-img-wrap">
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85" alt="Sunset Terraces" class="l-img">
-        <span class="l-tag outline">Mới</span>
+        <span class="l-tag outline" data-en="New">Mới</span>
       </div>
       <div class="l-info">
         <div class="l-name">Sunset Terraces</div>
         <div class="l-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Thảo Điền, Quận 2</div>
         <hr class="l-divider">
-        <div class="l-specs"><span class="l-spec">3 Phòng Ngủ</span><span class="l-spec">245 m²</span><span class="l-price">44 tỷ</span></div>
+        <div class="l-specs"><span class="l-spec" data-en="3 Bedrooms">3 Phòng Ngủ</span><span class="l-spec">245 m²</span><span class="l-price">44 tỷ</span></div>
       </div>
     </a>
 
     <a href="#" class="l-card reveal d2">
       <div class="l-img-wrap">
         <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=85" alt="Ivory Residences" class="l-img">
-        <span class="l-tag">Hot</span>
+        <span class="l-tag" data-en="Hot">Hot</span>
       </div>
       <div class="l-info">
         <div class="l-name">Ivory Residences</div>
         <div class="l-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Phú Mỹ Hưng, Q.7</div>
         <hr class="l-divider">
-        <div class="l-specs"><span class="l-spec">5 Phòng Ngủ</span><span class="l-spec">480 m²</span><span class="l-price">95 tỷ</span></div>
+        <div class="l-specs"><span class="l-spec" data-en="5 Bedrooms">5 Phòng Ngủ</span><span class="l-spec">480 m²</span><span class="l-price">95 tỷ</span></div>
       </div>
     </a>
 
     <a href="#" class="l-card reveal d1">
       <div class="l-img-wrap">
         <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=85" alt="Azure Garden" class="l-img">
-        <span class="l-tag outline">Mới</span>
+        <span class="l-tag outline" data-en="New">Mới</span>
       </div>
       <div class="l-info">
         <div class="l-name">Azure Garden Villa</div>
         <div class="l-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Vinhomes Central Park</div>
         <hr class="l-divider">
-        <div class="l-specs"><span class="l-spec">4 Phòng Ngủ</span><span class="l-spec">390 m²</span><span class="l-price">66 tỷ</span></div>
+        <div class="l-specs"><span class="l-spec" data-en="4 Bedrooms">4 Phòng Ngủ</span><span class="l-spec">390 m²</span><span class="l-price">66 tỷ</span></div>
       </div>
     </a>
 
@@ -1520,20 +1544,20 @@ footer {
         <div class="l-name">The Ellipse Tower</div>
         <div class="l-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Quận 3, TP. HCM</div>
         <hr class="l-divider">
-        <div class="l-specs"><span class="l-spec">2 Phòng Ngủ</span><span class="l-spec">175 m²</span><span class="l-price">24 tỷ</span></div>
+        <div class="l-specs"><span class="l-spec" data-en="2 Bedrooms">2 Phòng Ngủ</span><span class="l-spec">175 m²</span><span class="l-price">24 tỷ</span></div>
       </div>
     </a>
 
     <a href="#" class="l-card reveal d3">
       <div class="l-img-wrap">
         <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=85" alt="Palm Crest" class="l-img">
-        <span class="l-tag">Giảm Giá</span>
+        <span class="l-tag" data-en="Sale">Giảm Giá</span>
       </div>
       <div class="l-info">
         <div class="l-name">Palm Crest Estate</div>
         <div class="l-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Bình Thạnh, TP. HCM</div>
         <hr class="l-divider">
-        <div class="l-specs"><span class="l-spec">6 Phòng Ngủ</span><span class="l-spec">620 m²</span><span class="l-price">128 tỷ</span></div>
+        <div class="l-specs"><span class="l-spec" data-en="6 Bedrooms">6 Phòng Ngủ</span><span class="l-spec">620 m²</span><span class="l-price">128 tỷ</span></div>
       </div>
     </a>
 
@@ -1545,8 +1569,8 @@ footer {
      ============================================================ -->
 <div class="amenities-wrap" id="amenities">
   <div class="reveal">
-    <div class="section-label">Tiện Ích Đẳng Cấp</div>
-    <h2 class="section-title">Sống trọn vẹn từng <em>khoảnh khắc</em></h2>
+    <div class="section-label" data-en="World-Class Amenities">Tiện Ích Đẳng Cấp</div>
+    <h2 class="section-title" data-en="Live every &lt;em&gt;moment&lt;/em&gt; fully">Sống trọn vẹn từng <em>khoảnh khắc</em></h2>
   </div>
 
   <div class="bento-grid">
@@ -1555,7 +1579,7 @@ footer {
       <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85" alt="Pool" class="b-img" loading="lazy">
       <div class="b-overlay"></div>
       <span class="b-pill">Sky Pool</span>
-      <div class="b-label"><div class="b-label-name">Infinity Rooftop Pool</div><div class="b-label-sub">Tầng 50 · View 360° thành phố</div></div>
+      <div class="b-label"><div class="b-label-name">Infinity Rooftop Pool</div><div class="b-label-sub" data-en="Floor 50 · 360° city view">Tầng 50 · View 360° thành phố</div></div>
     </div>
 
     <div class="bento-cell c-2 img-cell reveal d1">
@@ -1569,7 +1593,7 @@ footer {
       <div class="b-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
       <div>
         <div class="b-stat-n">40<em>+</em></div>
-        <div class="b-stat-label">Tiện Ích Cao Cấp</div>
+        <div class="b-stat-label" data-en="Premium Amenities">Tiện Ích Cao Cấp</div>
       </div>
     </div>
 
@@ -1584,7 +1608,7 @@ footer {
       <div class="b-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <div>
         <div class="b-stat-n">24<em>/7</em></div>
-        <div class="b-stat-label">An Ninh Bảo Vệ</div>
+        <div class="b-stat-label" data-en="Security">An Ninh Bảo Vệ</div>
       </div>
     </div>
 
@@ -1592,14 +1616,14 @@ footer {
       <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&q=85" alt="Lobby" class="b-img" loading="lazy">
       <div class="b-overlay"></div>
       <span class="b-pill">Grand Lobby</span>
-      <div class="b-label"><div class="b-label-name">Sảnh Đón Khách 5 Sao</div><div class="b-label-sub">Nội thất nhập khẩu · Concierge 24/7</div></div>
+      <div class="b-label"><div class="b-label-name" data-en="5-Star Grand Lobby">Sảnh Đón Khách 5 Sao</div><div class="b-label-sub" data-en="Imported furnishings · Concierge 24/7">Nội thất nhập khẩu · Concierge 24/7</div></div>
     </div>
 
     <div class="bento-cell c-7 stat-cell reveal d2">
       <div class="b-stat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
       <div>
         <div class="b-stat-n" style="font-size:32px">500<em>+</em></div>
-        <div class="b-stat-label">Chỗ Đậu Xe Hầm</div>
+        <div class="b-stat-label" data-en="Basement Parking Spots">Chỗ Đậu Xe Hầm</div>
       </div>
     </div>
 
@@ -1613,19 +1637,19 @@ footer {
   <div class="stats-inner">
     <div class="stat-block reveal">
       <div class="stat-n">1,200<em>+</em></div>
-      <div class="stat-l">Bất Động Sản Đã Bán</div>
+      <div class="stat-l" data-en="Properties Sold">Bất Động Sản Đã Bán</div>
     </div>
     <div class="stat-block reveal d1">
       <div class="stat-n">60.000<em>tỷ</em></div>
-      <div class="stat-l">Tổng Giá Trị Giao Dịch</div>
+      <div class="stat-l" data-en="Total Transaction Value">Tổng Giá Trị Giao Dịch</div>
     </div>
     <div class="stat-block reveal d2">
       <div class="stat-n">98<em>%</em></div>
-      <div class="stat-l">Khách Hàng Hài Lòng</div>
+      <div class="stat-l" data-en="Client Satisfaction">Khách Hàng Hài Lòng</div>
     </div>
     <div class="stat-block reveal d3">
       <div class="stat-n">45<em>d</em></div>
-      <div class="stat-l">Thời Gian Giao Dịch Trung Bình</div>
+      <div class="stat-l" data-en="Avg. Transaction Time">Thời Gian Giao Dịch Trung Bình</div>
     </div>
   </div>
 </div>
@@ -1636,19 +1660,19 @@ footer {
 <section class="apartments-section" id="apartments">
   <div class="section-header reveal">
     <div>
-      <div class="section-label">Căn Hộ Mẫu</div>
-      <h2 class="section-title">Tìm không gian<br>sống <em>lý tưởng</em></h2>
+      <div class="section-label" data-en="Show Apartments">Căn Hộ Mẫu</div>
+      <h2 class="section-title" data-en="Find your &lt;em&gt;ideal&lt;/em&gt; living space">Tìm không gian<br>sống <em>lý tưởng</em></h2>
     </div>
-    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:280px;text-align:right;line-height:1.85">Mỗi căn hộ được thiết kế theo chuẩn luxury — nơi thẩm mỹ và tiện nghi hòa làm một.</p>
+    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:280px;text-align:right;line-height:1.85" data-en="Each apartment is designed to luxury standards — where aesthetics and comfort become one.">Mỗi căn hộ được thiết kế theo chuẩn luxury — nơi thẩm mỹ và tiện nghi hòa làm một.</p>
   </div>
 
   <div class="apt-filter-bar reveal">
-    <button class="apt-filter-btn active" data-filter="all">Tất Cả</button>
+    <button class="apt-filter-btn active" data-filter="all" data-en="All">Tất Cả</button>
     <button class="apt-filter-btn" data-filter="studio">Studio</button>
-    <button class="apt-filter-btn" data-filter="1pn">1 Phòng Ngủ</button>
-    <button class="apt-filter-btn" data-filter="2pn">2 Phòng Ngủ</button>
-    <button class="apt-filter-btn" data-filter="3pn">3 Phòng Ngủ</button>
-    <button class="apt-filter-btn" data-filter="penthouse">Penthouse</button>
+    <button class="apt-filter-btn" data-filter="1pn" data-en="1 Bedroom">1 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="2pn" data-en="2 Bedrooms">2 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="3pn" data-en="3 Bedrooms">3 Phòng Ngủ</button>
+    <button class="apt-filter-btn" data-filter="penthouse" data-en="Penthouse">Penthouse</button>
   </div>
 
   <div class="apt-grid">
@@ -1659,16 +1683,16 @@ footer {
         <span class="apt-area-badge">45 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">Studio · Tầng 12–28</div>
+        <div class="apt-type" data-en="Studio · Floor 12–28">Studio · Tầng 12–28</div>
         <div class="apt-name">Urban Studio Loft</div>
         <div class="apt-specs">
-          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> Sảnh khách + Bếp</span>
+          <span class="apt-spec" data-en="Living Room + Kitchen"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> Sảnh khách + Bếp</span>
           <span class="apt-spec">1 WC</span>
           <span class="apt-spec">45 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">8 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">8 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1680,16 +1704,16 @@ footer {
         <span class="apt-area-badge">68 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">1 PN · Tầng 15–35</div>
+        <div class="apt-type" data-en="1 BR · Floor 15–35">1 PN · Tầng 15–35</div>
         <div class="apt-name">Serene One-Bed</div>
         <div class="apt-specs">
-          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 1 Phòng Ngủ</span>
+          <span class="apt-spec" data-en="1 Bedroom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 1 Phòng Ngủ</span>
           <span class="apt-spec">2 WC</span>
           <span class="apt-spec">68 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">14 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">14 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1701,16 +1725,16 @@ footer {
         <span class="apt-area-badge">105 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">2 PN · Tầng 18–40</div>
+        <div class="apt-type" data-en="2 BR · Floor 18–40">2 PN · Tầng 18–40</div>
         <div class="apt-name">Grand Two-Bed Residence</div>
         <div class="apt-specs">
-          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 2 Phòng Ngủ</span>
+          <span class="apt-spec" data-en="2 Bedrooms"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 2 Phòng Ngủ</span>
           <span class="apt-spec">2 WC</span>
           <span class="apt-spec">105 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">22 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">22 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1722,16 +1746,16 @@ footer {
         <span class="apt-area-badge">158 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">3 PN · Tầng 20–45</div>
+        <div class="apt-type" data-en="3 BR · Floor 20–45">3 PN · Tầng 20–45</div>
         <div class="apt-name">Premium Family Suite</div>
         <div class="apt-specs">
-          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 3 Phòng Ngủ</span>
+          <span class="apt-spec" data-en="3 Bedrooms"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 3 Phòng Ngủ</span>
           <span class="apt-spec">3 WC</span>
           <span class="apt-spec">158 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">38 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">38 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1743,16 +1767,16 @@ footer {
         <span class="apt-area-badge">320 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">Penthouse · Tầng 45–50</div>
+        <div class="apt-type" data-en="Penthouse · Floor 45–50">Penthouse · Tầng 45–50</div>
         <div class="apt-name">Sky Penthouse Collection</div>
         <div class="apt-specs">
-          <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 4 Phòng Ngủ</span>
+          <span class="apt-spec" data-en="4 Bedrooms"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 4 Phòng Ngủ</span>
           <span class="apt-spec">4 WC</span>
           <span class="apt-spec">320 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">95 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">95 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1764,7 +1788,7 @@ footer {
         <span class="apt-area-badge">128 m²</span>
       </div>
       <div class="apt-info">
-        <div class="apt-type">2 PN Duplex · Tầng 25–38</div>
+        <div class="apt-type" data-en="2 BR Duplex · Floor 25–38">2 PN Duplex · Tầng 25–38</div>
         <div class="apt-name">Sky Duplex Loft</div>
         <div class="apt-specs">
           <span class="apt-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="14" width="6" height="8"/></svg> 2 Phòng Ngủ</span>
@@ -1772,8 +1796,8 @@ footer {
           <span class="apt-spec">128 m²</span>
         </div>
         <div class="apt-footer">
-          <div class="apt-price">28 tỷ<span>từ</span></div>
-          <a href="#contact" class="apt-btn">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="apt-price">28 tỷ<span data-en="from">từ</span></div>
+          <a href="#contact" class="apt-btn" data-en="View details">Xem chi tiết <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1792,8 +1816,8 @@ footer {
     </div>
   </div>
   <div class="feat-content reveal-r">
-    <div class="section-label">Dịch Vụ Toàn Diện</div>
-    <h2 class="section-title" style="font-size:clamp(30px,3.2vw,48px);">Hành trình <em>suôn sẻ</em><br>từ đầu đến cuối</h2>
+    <div class="section-label" data-en="Full-Service Agency">Dịch Vụ Toàn Diện</div>
+    <h2 class="section-title" style="font-size:clamp(30px,3.2vw,48px);" data-en="A &lt;em&gt;seamless&lt;/em&gt; journey from start to finish">Hành trình <em>suôn sẻ</em><br>từ đầu đến cuối</h2>
     <div class="acc-list" id="acc">
 
       <div class="acc-item open"
@@ -1802,10 +1826,10 @@ footer {
            data-s="Đội ngũ 20+ luật sư · Bảo vệ quyền lợi toàn diện">
         <div class="acc-head">
           <span class="acc-num">01</span>
-          <span class="acc-title">Tư Vấn Pháp Lý &amp; Hợp Đồng</span>
+          <span class="acc-title" data-en="Legal Consulting &amp; Contracts">Tư Vấn Pháp Lý &amp; Hợp Đồng</span>
           <span class="acc-icon">−</span>
         </div>
-        <div class="acc-body"><p>Đội ngũ pháp lý 20+ luật sư chuyên bất động sản đảm bảo mọi giao dịch đúng quy định pháp luật. Chúng tôi rà soát từng điều khoản, bảo vệ tối đa quyền lợi của bạn.</p></div>
+        <div class="acc-body"><p data-en="Our 20+ real estate attorneys ensure every transaction complies with the law. We review every clause to fully protect your rights.">Đội ngũ pháp lý 20+ luật sư chuyên bất động sản đảm bảo mọi giao dịch đúng quy định pháp luật. Chúng tôi rà soát từng điều khoản, bảo vệ tối đa quyền lợi của bạn.</p></div>
       </div>
 
       <div class="acc-item"
@@ -1814,10 +1838,10 @@ footer {
            data-s="Dữ liệu thời gian thực · Chính xác 95%">
         <div class="acc-head">
           <span class="acc-num">02</span>
-          <span class="acc-title">Định Giá &amp; Phân Tích Thị Trường</span>
+          <span class="acc-title" data-en="Valuation &amp; Market Analysis">Định Giá &amp; Phân Tích Thị Trường</span>
           <span class="acc-icon">+</span>
         </div>
-        <div class="acc-body"><p>Hệ thống dữ liệu độc quyền theo dõi 50,000+ giao dịch, định giá chính xác trong 48 giờ. Báo cáo thị trường toàn diện và minh bạch 100%.</p></div>
+        <div class="acc-body"><p data-en="Our proprietary database tracks 50,000+ transactions for accurate valuations within 48 hours. Comprehensive and fully transparent market reports.">Hệ thống dữ liệu độc quyền theo dõi 50,000+ giao dịch, định giá chính xác trong 48 giờ. Báo cáo thị trường toàn diện và minh bạch 100%.</p></div>
       </div>
 
       <div class="acc-item"
@@ -1826,10 +1850,10 @@ footer {
            data-s="Tăng giá trị +15% · Nhiếp ảnh cinematic">
         <div class="acc-head">
           <span class="acc-num">03</span>
-          <span class="acc-title">Thiết Kế Nội Thất &amp; Staging</span>
+          <span class="acc-title" data-en="Interior Design &amp; Staging">Thiết Kế Nội Thất &amp; Staging</span>
           <span class="acc-icon">+</span>
         </div>
-        <div class="acc-body"><p>Interior designer kết hợp nhiếp ảnh chuyên nghiệp giúp bất động sản tỏa sáng. Trung bình tăng giá bán 15% sau 2 tuần staging.</p></div>
+        <div class="acc-body"><p data-en="Interior designers combined with professional photography make your property shine. Average sale price increase of 15% within 2 weeks of staging.">Interior designer kết hợp nhiếp ảnh chuyên nghiệp giúp bất động sản tỏa sáng. Trung bình tăng giá bán 15% sau 2 tuần staging.</p></div>
       </div>
 
       <div class="acc-item"
@@ -1838,10 +1862,10 @@ footer {
            data-s="Tiếp cận 200K+ khách mua · Virtual Reality">
         <div class="acc-head">
           <span class="acc-num">04</span>
-          <span class="acc-title">Marketing &amp; Virtual Tour 3D</span>
+          <span class="acc-title" data-en="Marketing &amp; Virtual Tour 3D">Marketing &amp; Virtual Tour 3D</span>
           <span class="acc-icon">+</span>
         </div>
-        <div class="acc-body"><p>Chiến dịch marketing đa kênh với video flycam, virtual tour 360° và quảng cáo nhắm mục tiêu chính xác tiếp cận 200,000+ khách mua trong và ngoài nước.</p></div>
+        <div class="acc-body"><p data-en="Multi-channel campaigns featuring aerial videos, 360° virtual tours and precision-targeted ads reaching 200,000+ domestic and international buyers.">Chiến dịch marketing đa kênh với video flycam, virtual tour 360° và quảng cáo nhắm mục tiêu chính xác tiếp cận 200,000+ khách mua trong và ngoài nước.</p></div>
       </div>
 
       <div class="acc-item"
@@ -1850,10 +1874,10 @@ footer {
            data-s="ROI tối đa · Quản lý cho thuê toàn diện">
         <div class="acc-head">
           <span class="acc-num">05</span>
-          <span class="acc-title">Quản Lý Tài Sản Sau Bán</span>
+          <span class="acc-title" data-en="Post-Sale Asset Management">Quản Lý Tài Sản Sau Bán</span>
           <span class="acc-icon">+</span>
         </div>
-        <div class="acc-body"><p>Property management toàn diện: vận hành, bảo trì, tìm thuê và báo cáo tài chính hàng tháng để tài sản của bạn sinh lời tối đa.</p></div>
+        <div class="acc-body"><p data-en="Full property management: operations, maintenance, tenant sourcing, and monthly financial reporting to maximise your asset's returns.">Property management toàn diện: vận hành, bảo trì, tìm thuê và báo cáo tài chính hàng tháng để tài sản của bạn sinh lời tối đa.</p></div>
       </div>
 
     </div>
@@ -1870,7 +1894,7 @@ footer {
       "Luxury is not about what you own —<br>
       it's about how <strong>intentionally</strong> you live."
     </p>
-    <a href="#contact" class="btn-primary">Đặt Lịch Tư Vấn Riêng</a>
+    <a href="#contact" class="btn-primary" data-en="Book a Private Consultation">Đặt Lịch Tư Vấn Riêng</a>
   </div>
 </div>
 
@@ -1880,10 +1904,10 @@ footer {
 <section class="testimonials-section" id="testimonials">
   <div class="test-header">
     <div class="reveal">
-      <div class="section-label">Khách Hàng Nói Gì</div>
-      <h2 class="section-title">Niềm tin được <em>xây dựng</em><br>qua từng giao dịch</h2>
+      <div class="section-label" data-en="What Our Clients Say">Khách Hàng Nói Gì</div>
+      <h2 class="section-title" data-en="Trust &lt;em&gt;built&lt;/em&gt; through every transaction">Niềm tin được <em>xây dựng</em><br>qua từng giao dịch</h2>
     </div>
-    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:280px;text-align:right;line-height:1.85">Hơn 1,200 gia đình đã tin tưởng Sany Holding trong hành trình tìm kiếm tổ ấm mơ ước.</p>
+    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:280px;text-align:right;line-height:1.85" data-en="Over 1,200 families have trusted Sany Holding in their journey to find their dream home.">Hơn 1,200 gia đình đã tin tưởng Sany Holding trong hành trình tìm kiếm tổ ấm mơ ước.</p>
   </div>
   <div class="test-track-wrap">
     <div class="test-track" id="test-track">
@@ -1898,7 +1922,7 @@ footer {
           <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
         <blockquote class="test-quote">
-          Sany Holding đã giúp tôi tìm được căn penthouse hoàn hảo chỉ trong 3 tuần. Họ không chỉ bán nhà — họ thực sự hiểu phong cách sống và giá trị của từng khách hàng. Đây là trải nghiệm dịch vụ tốt nhất tôi từng có.
+          <span data-en="Sany Holding helped me find the perfect penthouse in just 3 weeks. They don't just sell homes — they truly understand each client's lifestyle and values. This is the best service experience I've ever had.">Sany Holding đã giúp tôi tìm được căn penthouse hoàn hảo chỉ trong 3 tuần. Họ không chỉ bán nhà — họ thực sự hiểu phong cách sống và giá trị của từng khách hàng. Đây là trải nghiệm dịch vụ tốt nhất tôi từng có.</span>
         </blockquote>
       </div>
 
@@ -1912,7 +1936,7 @@ footer {
           <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
         <blockquote class="test-quote">
-          Quy trình mua bán minh bạch tuyệt đối, đội ngũ pháp lý chuyên nghiệp và dịch vụ hậu mãi xuất sắc. Portfolio bất động sản của tôi tăng 28% sau 18 tháng nhờ tư vấn từ Sany Holding.
+          <span data-en="A completely transparent process, professional legal team, and outstanding after-sales service. My real estate portfolio grew 28% in 18 months thanks to Sany Holding's advice.">Quy trình mua bán minh bạch tuyệt đối, đội ngũ pháp lý chuyên nghiệp và dịch vụ hậu mãi xuất sắc. Portfolio bất động sản của tôi tăng 28% sau 18 tháng nhờ tư vấn từ Sany Holding.</span>
         </blockquote>
       </div>
 
@@ -1926,7 +1950,7 @@ footer {
           <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
         <blockquote class="test-quote">
-          Danh mục đầu tư của tôi tăng trưởng 32% sau khi hợp tác với Sany Holding. Họ là đối tác chiến lược thực sự, luôn đặt lợi ích dài hạn của khách hàng lên hàng đầu.
+          <span data-en="My investment portfolio grew 32% after partnering with Sany Holding. They are a true strategic partner, always putting long-term client interests first.">Danh mục đầu tư của tôi tăng trưởng 32% sau khi hợp tác với Sany Holding. Họ là đối tác chiến lược thực sự, luôn đặt lợi ích dài hạn của khách hàng lên hàng đầu.</span>
         </blockquote>
       </div>
 
@@ -1954,10 +1978,10 @@ footer {
 <section class="blog-section" id="blog">
   <div class="section-header reveal">
     <div>
-      <div class="section-label">Insights &amp; Phân Tích</div>
-      <h2 class="section-title">Góc nhìn từ <em>chuyên gia</em></h2>
+      <div class="section-label" data-en="Insights &amp; Analysis">Insights &amp; Phân Tích</div>
+      <h2 class="section-title" data-en="Perspectives from &lt;em&gt;our experts&lt;/em&gt;">Góc nhìn từ <em>chuyên gia</em></h2>
     </div>
-    <a href="#" class="view-all">Xem tất cả bài viết</a>
+    <a href="#" class="view-all" data-en="View all articles">Xem tất cả bài viết</a>
   </div>
   <div class="blog-grid reveal">
     <a href="#" class="b-card featured">
@@ -1965,26 +1989,26 @@ footer {
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=85" alt="Market" class="b-img" style="min-height:280px">
       </div>
       <div class="b-info">
-        <div class="b-cat">Phân Tích Thị Trường &middot; 8 phút đọc</div>
-        <div class="b-title">Bất động sản cao cấp TP.HCM: Xu hướng và cơ hội vàng giai đoạn 2025–2030</div>
-        <div class="b-meta"><span>Nguyễn Phúc Khang · Senior Analyst</span><span>Tháng 4, 2025</span></div>
+        <div class="b-cat" data-en="Market Analysis &middot; 8 min read">Phân Tích Thị Trường &middot; 8 phút đọc</div>
+        <div class="b-title" data-en="Premium real estate in HCMC: Trends and golden opportunities for 2025–2030">Bất động sản cao cấp TP.HCM: Xu hướng và cơ hội vàng giai đoạn 2025–2030</div>
+        <div class="b-meta"><span>Nguyen Phuc Khang · Senior Analyst</span><span data-en="Apr 2025">Tháng 4, 2025</span></div>
       </div>
     </a>
     <div style="display:flex;flex-direction:column;gap:20px">
       <a href="#" class="b-card">
         <div class="b-img-wrap"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=85" alt="Legal" class="b-img"></div>
         <div class="b-info">
-          <div class="b-cat">Pháp Lý &middot; 5 phút đọc</div>
-          <div class="b-title">5 điều bắt buộc phải biết khi mua nhà tại Việt Nam năm 2025</div>
-          <div class="b-meta"><span>Tháng 3, 2025</span></div>
+          <div class="b-cat" data-en="Legal &middot; 5 min read">Pháp Lý &middot; 5 phút đọc</div>
+          <div class="b-title" data-en="5 must-know facts before buying property in Vietnam in 2025">5 điều bắt buộc phải biết khi mua nhà tại Việt Nam năm 2025</div>
+          <div class="b-meta"><span data-en="Mar 2025">Tháng 3, 2025</span></div>
         </div>
       </a>
       <a href="#" class="b-card">
         <div class="b-img-wrap"><img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=85" alt="Interior" class="b-img"></div>
         <div class="b-info">
-          <div class="b-cat">Thiết Kế &middot; 6 phút đọc</div>
-          <div class="b-title">Nghệ thuật staging: Bí quyết tăng giá bán 15% trong 14 ngày</div>
-          <div class="b-meta"><span>Tháng 2, 2025</span></div>
+          <div class="b-cat" data-en="Design &middot; 6 min read">Thiết Kế &middot; 6 phút đọc</div>
+          <div class="b-title" data-en="The art of staging: How to increase sale price by 15% in 14 days">Nghệ thuật staging: Bí quyết tăng giá bán 15% trong 14 ngày</div>
+          <div class="b-meta"><span data-en="Feb 2025">Tháng 2, 2025</span></div>
         </div>
       </a>
     </div>
@@ -1997,47 +2021,47 @@ footer {
 <section class="process-section" id="process">
   <div class="section-header reveal">
     <div>
-      <div class="section-label">Quy Trình Làm Việc</div>
-      <h2 class="section-title">Hành trình <em>không rào cản</em></h2>
+      <div class="section-label" data-en="How We Work">Quy Trình Làm Việc</div>
+      <h2 class="section-title" data-en="A &lt;em&gt;barrier-free&lt;/em&gt; journey">Hành trình <em>không rào cản</em></h2>
     </div>
-    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:300px;text-align:right;line-height:1.85">Chúng tôi thiết kế quy trình để bạn luôn trong tầm kiểm soát, không bao giờ cảm thấy bị bỏ lại một mình.</p>
+    <p class="reveal d2" style="font-size:13.5px;color:var(--text-secondary);max-width:300px;text-align:right;line-height:1.85" data-en="We design our process so you are always in control and never feel left behind.">Chúng tôi thiết kế quy trình để bạn luôn trong tầm kiểm soát, không bao giờ cảm thấy bị bỏ lại một mình.</p>
   </div>
   <div class="process-grid">
     <div class="p-step reveal">
       <div class="p-num">01</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-      <div class="p-title">Tư Vấn Ban Đầu</div>
-      <p class="p-desc">Lắng nghe nhu cầu, mục tiêu và phong cách sống để xây dựng chiến lược tối ưu nhất dành riêng cho bạn.</p>
+      <div class="p-title" data-en="Initial Consultation">Tư Vấn Ban Đầu</div>
+      <p class="p-desc" data-en="We listen to your needs, goals, and lifestyle to build the most optimal strategy tailored exclusively for you.">Lắng nghe nhu cầu, mục tiêu và phong cách sống để xây dựng chiến lược tối ưu nhất dành riêng cho bạn.</p>
     </div>
     <div class="p-step reveal d1">
       <div class="p-num">02</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 21V9"/></svg></div>
-      <div class="p-title">Phân Tích Thị Trường</div>
-      <p class="p-desc">Báo cáo thị trường toàn diện với dữ liệu thời gian thực và định giá chính xác trong vòng 48 giờ.</p>
+      <div class="p-title" data-en="Market Analysis">Phân Tích Thị Trường</div>
+      <p class="p-desc" data-en="Comprehensive market reports with real-time data and accurate valuations delivered within 48 hours.">Báo cáo thị trường toàn diện với dữ liệu thời gian thực và định giá chính xác trong vòng 48 giờ.</p>
     </div>
     <div class="p-step reveal d2">
       <div class="p-num">03</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
-      <div class="p-title">Tìm Kiếm &amp; Giới Thiệu</div>
-      <p class="p-desc">Sàng lọc từ 10,000+ bất động sản trong hệ thống để đề xuất đúng những lựa chọn phù hợp nhất với bạn.</p>
+      <div class="p-title" data-en="Search &amp; Presentation">Tìm Kiếm &amp; Giới Thiệu</div>
+      <p class="p-desc" data-en="Filtering from 10,000+ properties in our system to recommend only the best matches for you.">Sàng lọc từ 10,000+ bất động sản trong hệ thống để đề xuất đúng những lựa chọn phù hợp nhất với bạn.</p>
     </div>
     <div class="p-step reveal d3">
       <div class="p-num">04</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div>
-      <div class="p-title">Staging &amp; Marketing</div>
-      <p class="p-desc">Tối ưu hóa bất động sản với interior design, ảnh cinematic và virtual tour 3D chuyên nghiệp.</p>
+      <div class="p-title" data-en="Staging &amp; Marketing">Staging &amp; Marketing</div>
+      <p class="p-desc" data-en="Optimise your property with interior design, cinematic photography, and professional 3D virtual tours.">Tối ưu hóa bất động sản với interior design, ảnh cinematic và virtual tour 3D chuyên nghiệp.</p>
     </div>
     <div class="p-step reveal d4">
       <div class="p-num">05</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
-      <div class="p-title">Đàm Phán &amp; Ký Kết</div>
-      <p class="p-desc">Đội ngũ đàm phán đảm bảo điều khoản tốt nhất và quy trình pháp lý hoàn toàn minh bạch, rõ ràng.</p>
+      <div class="p-title" data-en="Negotiation &amp; Signing">Đàm Phán &amp; Ký Kết</div>
+      <p class="p-desc" data-en="Our negotiation team secures the best terms and ensures the legal process is fully transparent and clear.">Đội ngũ đàm phán đảm bảo điều khoản tốt nhất và quy trình pháp lý hoàn toàn minh bạch, rõ ràng.</p>
     </div>
     <div class="p-step reveal d5">
       <div class="p-num">06</div>
       <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
-      <div class="p-title">Hỗ Trợ Sau Giao Dịch</div>
-      <p class="p-desc">Đồng hành lâu dài qua quản lý tài sản, cho thuê và tư vấn đầu tư để tối đa hóa giá trị tài sản.</p>
+      <div class="p-title" data-en="Post-Transaction Support">Hỗ Trợ Sau Giao Dịch</div>
+      <p class="p-desc" data-en="Long-term partnership through asset management, leasing, and investment advisory to maximise property value.">Đồng hành lâu dài qua quản lý tài sản, cho thuê và tư vấn đầu tư để tối đa hóa giá trị tài sản.</p>
     </div>
   </div>
 </section>
@@ -2049,30 +2073,30 @@ footer {
   <div class="faq-inner">
     <div class="reveal">
       <div class="section-label">FAQ</div>
-      <h2 class="section-title" style="font-size:clamp(32px,3.8vw,54px)">Câu hỏi<br><em>thường gặp</em></h2>
-      <p class="section-sub">Không tìm thấy câu trả lời bạn cần? Đội ngũ tư vấn của chúng tôi luôn sẵn sàng hỗ trợ 24/7.</p>
-      <a href="#contact" class="faq-cta-btn">Liên Hệ Tư Vấn</a>
+      <h2 class="section-title" style="font-size:clamp(32px,3.8vw,54px)" data-en="Frequently &lt;br&gt;&lt;em&gt;Asked Questions&lt;/em&gt;">Câu hỏi<br><em>thường gặp</em></h2>
+      <p class="section-sub" data-en="Can't find the answer you need? Our advisory team is always available 24/7.">Không tìm thấy câu trả lời bạn cần? Đội ngũ tư vấn của chúng tôi luôn sẵn sàng hỗ trợ 24/7.</p>
+      <a href="#contact" class="faq-cta-btn" data-en="Contact Us">Liên Hệ Tư Vấn</a>
     </div>
     <div class="reveal d2">
       <div class="fq-item open">
-        <div class="fq-head"><span class="fq-q">Sany Holding cung cấp những dịch vụ gì?</span><span class="fq-ico">−</span></div>
-        <div class="fq-a">Chúng tôi cung cấp dịch vụ toàn diện: mua bán và cho thuê bất động sản cao cấp, tư vấn đầu tư, quản lý tài sản, thiết kế nội thất &amp; staging, tư vấn pháp lý và hỗ trợ tài chính — tất cả trong một đầu mối duy nhất.</div>
+        <div class="fq-head"><span class="fq-q" data-en="What services does Sany Holding offer?">Sany Holding cung cấp những dịch vụ gì?</span><span class="fq-ico">−</span></div>
+        <div class="fq-a" data-en="We offer a full suite: buying &amp; selling and renting luxury properties, investment advisory, asset management, interior design &amp; staging, legal consulting, and financial support — all under one roof.">Chúng tôi cung cấp dịch vụ toàn diện: mua bán và cho thuê bất động sản cao cấp, tư vấn đầu tư, quản lý tài sản, thiết kế nội thất &amp; staging, tư vấn pháp lý và hỗ trợ tài chính — tất cả trong một đầu mối duy nhất.</div>
       </div>
       <div class="fq-item">
-        <div class="fq-head"><span class="fq-q">Chi phí dịch vụ của Sany Holding là bao nhiêu?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a">Phí dịch vụ dao động 1–2% tổng giá trị giao dịch tùy theo loại hình và quy mô. Chúng tôi công khai 100% phí từ buổi tư vấn đầu tiên — cam kết không có phí ẩn.</div>
+        <div class="fq-head"><span class="fq-q" data-en="What are Sany Holding's fees?">Chi phí dịch vụ của Sany Holding là bao nhiêu?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a" data-en="Fees range from 1–2% of total transaction value depending on type and scale. We disclose 100% of fees from the very first consultation — no hidden charges.">Phí dịch vụ dao động 1–2% tổng giá trị giao dịch tùy theo loại hình và quy mô. Chúng tôi công khai 100% phí từ buổi tư vấn đầu tiên — cam kết không có phí ẩn.</div>
       </div>
       <div class="fq-item">
-        <div class="fq-head"><span class="fq-q">Mất bao lâu để bán một bất động sản?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a">Trung bình 30–45 ngày cho bất động sản được định giá đúng và marketing chuyên nghiệp. 87% bất động sản trong danh mục của chúng tôi được bán trong vòng 45 ngày đầu.</div>
+        <div class="fq-head"><span class="fq-q" data-en="How long does it take to sell a property?">Mất bao lâu để bán một bất động sản?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a" data-en="An average of 30–45 days for correctly priced properties with professional marketing. 87% of listings in our portfolio sell within the first 45 days.">Trung bình 30–45 ngày cho bất động sản được định giá đúng và marketing chuyên nghiệp. 87% bất động sản trong danh mục của chúng tôi được bán trong vòng 45 ngày đầu.</div>
       </div>
       <div class="fq-item">
-        <div class="fq-head"><span class="fq-q">Sany Holding hoạt động tại khu vực nào?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a">Chúng tôi tập trung tại TP. Hồ Chí Minh (Q.1, Q.2, Q.3, Q.7, Bình Thạnh) và Hà Nội (Tây Hồ, Cầu Giấy, Ba Đình). Đang mở rộng sang Đà Nẵng và Phú Quốc trong năm 2025.</div>
+        <div class="fq-head"><span class="fq-q" data-en="Which areas does Sany Holding operate in?">Sany Holding hoạt động tại khu vực nào?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a" data-en="We focus on Ho Chi Minh City (Districts 1, 2, 3, 7, Binh Thanh) and Hanoi (Tay Ho, Cau Giay, Ba Dinh). Expanding to Da Nang and Phu Quoc in 2025.">Chúng tôi tập trung tại TP. Hồ Chí Minh (Q.1, Q.2, Q.3, Q.7, Bình Thạnh) và Hà Nội (Tây Hồ, Cầu Giấy, Ba Đình). Đang mở rộng sang Đà Nẵng và Phú Quốc trong năm 2025.</div>
       </div>
       <div class="fq-item">
-        <div class="fq-head"><span class="fq-q">Người nước ngoài có thể mua bất động sản không?</span><span class="fq-ico">+</span></div>
-        <div class="fq-a">Có. Đội ngũ pháp lý của chúng tôi chuyên hỗ trợ người nước ngoài mua bất động sản theo Luật Nhà ở 2023, bao gồm tư vấn điều kiện, thủ tục và quyền sở hữu đầy đủ.</div>
+        <div class="fq-head"><span class="fq-q" data-en="Can foreigners buy property in Vietnam?">Người nước ngoài có thể mua bất động sản không?</span><span class="fq-ico">+</span></div>
+        <div class="fq-a" data-en="Yes. Our legal team specialises in helping foreigners purchase property under the 2023 Housing Law, covering eligibility, procedures, and full ownership rights.">Có. Đội ngũ pháp lý của chúng tôi chuyên hỗ trợ người nước ngoài mua bất động sản theo Luật Nhà ở 2023, bao gồm tư vấn điều kiện, thủ tục và quyền sở hữu đầy đủ.</div>
       </div>
     </div>
   </div>
@@ -2085,20 +2109,20 @@ footer {
   <div class="cta-bg"></div>
   <div class="cta-overlay"></div>
   <div class="cta-content reveal">
-    <span class="cta-eyebrow">Bắt Đầu Hành Trình Của Bạn</span>
-    <h2 class="cta-title">Tổ ấm mơ ước<br>của bạn <em>đang chờ</em></h2>
+    <span class="cta-eyebrow" data-en="Start Your Journey">Bắt Đầu Hành Trình Của Bạn</span>
+    <h2 class="cta-title" data-en="Your dream home&lt;br&gt;is &lt;em&gt;waiting for you&lt;/em&gt;">Tổ ấm mơ ước<br>của bạn <em>đang chờ</em></h2>
     <div class="cta-form">
       <div class="cta-form-row">
-        <input id="cta-name" type="text" class="cta-input" placeholder="Họ và tên của bạn..." required>
-        <input id="cta-phone" type="tel" class="cta-input cta-input-last" placeholder="Số điện thoại..." required>
+        <input id="cta-name" type="text" class="cta-input" placeholder="Họ và tên của bạn..." data-ph-en="Your full name..." required>
+        <input id="cta-phone" type="tel" class="cta-input cta-input-last" placeholder="Số điện thoại..." data-ph-en="Phone number..." required>
       </div>
       <div class="cta-form-row">
-        <input id="cta-email" type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn...">
-        <button id="cta-btn" class="cta-submit">Tư Vấn Miễn Phí</button>
+        <input id="cta-email" type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn..." data-ph-en="Your email address...">
+        <button id="cta-btn" class="cta-submit" data-en="Free Consultation">Tư Vấn Miễn Phí</button>
       </div>
       <div id="cta-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;text-align:center;color:#fff;"></div>
     </div>
-    <p class="cta-note">&#128274; Thông tin bảo mật tuyệt đối &middot; Không spam &middot; Phản hồi trong 2 giờ</p>
+    <p class="cta-note" data-en="&#128274; Strictly confidential &middot; No spam &middot; Response within 2 hours">&#128274; Thông tin bảo mật tuyệt đối &middot; Không spam &middot; Phản hồi trong 2 giờ</p>
   </div>
 </section>
 
@@ -2109,7 +2133,7 @@ footer {
   <div class="footer-top">
     <div>
       <a href="#" class="footer-logo">SANY<span class="dot"></span>HOLDING</a>
-      <p class="footer-desc">Kiến tạo không gian sống xa xỉ và những khoản đầu tư bất động sản thông minh tại Việt Nam từ năm 2009. Trusted by 1,200+ families.</p>
+      <p class="footer-desc" data-en="Crafting luxury living spaces and smart real estate investments in Vietnam since 2009. Trusted by 1,200+ families.">Kiến tạo không gian sống xa xỉ và những khoản đầu tư bất động sản thông minh tại Việt Nam từ năm 2009. Trusted by 1,200+ families.</p>
       <div class="footer-socials">
         <a href="#" class="f-soc" aria-label="LinkedIn">in</a>
         <a href="#" class="f-soc" aria-label="Facebook">fb</a>
@@ -2118,33 +2142,33 @@ footer {
       </div>
     </div>
     <div>
-      <div class="f-col-title">Trang Chính</div>
+      <div class="f-col-title" data-en="Navigation">Trang Chính</div>
       <ul class="f-links">
-        <li><a href="#">Trang Chủ</a></li>
-        <li><a href="#listings">Dự Án</a></li>
-        <li><a href="#amenities">Tiện Ích</a></li>
-        <li><a href="#features">Dịch Vụ</a></li>
+        <li><a href="#" data-en="Home">Trang Chủ</a></li>
+        <li><a href="#listings" data-en="Properties">Dự Án</a></li>
+        <li><a href="#amenities" data-en="Amenities">Tiện Ích</a></li>
+        <li><a href="#features" data-en="Services">Dịch Vụ</a></li>
         <li><a href="#blog">Insights</a></li>
       </ul>
     </div>
     <div>
-      <div class="f-col-title">Dịch Vụ</div>
+      <div class="f-col-title" data-en="Services">Dịch Vụ</div>
       <ul class="f-links">
-        <li><a href="#">Mua Bất Động Sản</a></li>
-        <li><a href="#">Bán Bất Động Sản</a></li>
-        <li><a href="#">Cho Thuê</a></li>
-        <li><a href="#">Quản Lý Tài Sản</a></li>
-        <li><a href="#">Tư Vấn Đầu Tư</a></li>
+        <li><a href="#" data-en="Buy Property">Mua Bất Động Sản</a></li>
+        <li><a href="#" data-en="Sell Property">Bán Bất Động Sản</a></li>
+        <li><a href="#" data-en="Rent">Cho Thuê</a></li>
+        <li><a href="#" data-en="Asset Management">Quản Lý Tài Sản</a></li>
+        <li><a href="#" data-en="Investment Advisory">Tư Vấn Đầu Tư</a></li>
       </ul>
     </div>
     <div>
-      <div class="f-col-title">Liên Hệ</div>
+      <div class="f-col-title" data-en="Contact">Liên Hệ</div>
       <ul class="f-links">
         <li><a href="#">72 Nguyễn Thị Minh Khai, Q.1</a></li>
         <li><a href="#">+84 28 3822 8888</a></li>
         <li><a href="#">hello@sanyholding.vn</a></li>
         <li style="margin-top:10px">
-          <a href="#contact" style="display:inline-block;background:var(--gold);color:#fff;padding:11px 22px;border-radius:4px;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">Đặt Lịch Ngay</a>
+          <a href="#contact" style="display:inline-block;background:var(--gold);color:#fff;padding:11px 22px;border-radius:4px;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;" data-en="Book Now">Đặt Lịch Ngay</a>
         </li>
       </ul>
     </div>
@@ -2152,9 +2176,9 @@ footer {
   <div class="footer-bottom">
     <span>&copy; 2025 Sany Holding JSC. All rights reserved.</span>
     <div class="footer-bottom-links">
-      <a href="#">Chính sách bảo mật</a>
-      <a href="#">Điều khoản sử dụng</a>
-      <a href="#">Cookie</a>
+      <a href="#" data-en="Privacy Policy">Chính sách bảo mật</a>
+      <a href="#" data-en="Terms of Use">Điều khoản sử dụng</a>
+      <a href="#" data-en="Cookie">Cookie</a>
     </div>
   </div>
 </footer>
@@ -2417,11 +2441,60 @@ document.getElementById('cta-btn').addEventListener('click', () => {
     dot.style.opacity = '0'; ring.style.opacity = '0'; visible = false;
   });
 })();
+
+/* ============================================================
+   I18N — LANGUAGE TOGGLE (VI / EN)
+   ============================================================ */
+(function initI18n() {
+  const btn = document.getElementById('lang-toggle');
+  if (!btn) return;
+
+  function setLang(lang) {
+    /* ── Text elements (data-en attribute) ── */
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (lang === 'en') {
+        if (!el.dataset.vi) el.dataset.vi = el.innerHTML;
+        el.innerHTML = el.dataset.en;
+      } else {
+        if (el.dataset.vi) el.innerHTML = el.dataset.vi;
+      }
+    });
+
+    /* ── Input placeholders (data-ph-en attribute) ── */
+    document.querySelectorAll('[data-ph-en]').forEach(inp => {
+      if (lang === 'en') {
+        if (!inp.dataset.phVi) inp.dataset.phVi = inp.placeholder;
+        inp.placeholder = inp.dataset.phEn;
+      } else {
+        if (inp.dataset.phVi) inp.placeholder = inp.dataset.phVi;
+      }
+    });
+
+    /* ── Update button label ── */
+    btn.textContent  = lang === 'en' ? 'VI' : 'EN';
+    btn.dataset.lang = lang;
+
+    /* ── html lang attr & localStorage ── */
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('sany_lang', lang); } catch(e) {}
+  }
+
+  /* Toggle on click */
+  btn.addEventListener('click', () => {
+    setLang(btn.dataset.lang === 'vi' ? 'en' : 'vi');
+  });
+
+  /* Restore saved language */
+  try {
+    const saved = localStorage.getItem('sany_lang');
+    if (saved === 'en') setLang('en');
+  } catch(e) {}
+})();
 </script>
 
 <a href="#contact" class="float-cta" aria-label="Li&#234;n h&#7879; ngay">
   <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-  <span class="float-tooltip">T&#432; v&#7845;n mi&#7877;n ph&#237;</span>
+  <span class="float-tooltip" data-en="Free consultation">T&#432; v&#7845;n mi&#7877;n ph&#237;</span>
 </a>
 </body>
 </html>
