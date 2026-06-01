@@ -4,15 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sany Holding — Kiến Tạo Cuộc Sống Đỉnh Cao</title>
-<meta name="description" content="Sany Holding – Chuyên gia bất động sản cao cấp tại TP. Hồ Chí Minh từ năm 2009. Hơn 1.200 giao dịch thành công, tổng giá trị 60.000 tỷ VND. Tư vấn miễn phí – phản hồi trong 2 giờ.">
-<meta name="keywords" content="bất động sản cao cấp, luxury real estate, Sany Holding, mua nhà Sài Gòn, penthouse Quận 1, tư vấn bất động sản TP HCM">
-<meta property="og:title" content="Sany Holding — Kiến Tạo Cuộc Sống Đỉnh Cao">
-<meta property="og:description" content="Hơn 1.200 giao dịch thành công. Tư vấn miễn phí, phản hồi trong 2 giờ. Bất động sản cao cấp TP. Hồ Chí Minh.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="robots" content="index, follow">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2000&q=85" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -153,7 +144,7 @@ nav.scrolled .nav-cta { color: #fff !important; }
    HERO — split layout
    ============================================================ */
 .hero {
-  min-height: 100dvh; min-height: max(100vh, 720px);
+  height: 100vh; min-height: 720px;
   position: relative;
   display: flex; align-items: flex-end;
   overflow: hidden;
@@ -197,7 +188,7 @@ nav.scrolled .nav-cta { color: #fff !important; }
   letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--gold-light);
 }
-.hero-h1 { text-wrap: balance;
+.hero-h1 {
   font-family: var(--serif);
   font-size: clamp(48px, 6.5vw, 96px);
   font-weight: 400; line-height: 0.96;
@@ -410,7 +401,7 @@ nav.scrolled .nav-cta { color: #fff !important; }
 .section-label::before {
   content: ''; width: 24px; height: 1px; background: var(--gold);
 }
-.section-title { text-wrap: balance;
+.section-title {
   font-family: var(--serif);
   font-size: clamp(36px, 4.5vw, 62px);
   font-weight: 400; line-height: 1.08;
@@ -1103,7 +1094,7 @@ nav.scrolled .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
   color: var(--gold-light); margin-bottom: 28px;
   display: block; font-weight: 500;
 }
-.cta-title { text-wrap: balance;
+.cta-title {
   font-family: var(--serif);
   font-size: clamp(44px, 6.5vw, 88px);
   font-weight: 400; line-height: 0.97; letter-spacing: -0.01em;
@@ -1330,149 +1321,6 @@ footer {
 .footer-bottom a:hover { color: var(--gold); }
 .footer-bottom-links { display: flex; gap: 22px; }
 
-
-/* ============================================================
-   HAMBURGER MENU (mobile)
-   ============================================================ */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px; height: 40px;
-  background: none; border: none; cursor: pointer;
-  padding: 6px;
-  z-index: 600;
-}
-.nav-hamburger span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--text-on-dark);
-  transition: all 0.3s var(--ease);
-  border-radius: 2px;
-}
-nav.scrolled .nav-hamburger span { background: var(--text-primary); }
-.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* Mobile nav drawer */
-.mobile-nav-drawer {
-  display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 490;
-  background: rgba(17,17,16,0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 100px 32px 48px;
-  flex-direction: column;
-  gap: 0;
-  opacity: 0;
-  transform: translateY(-12px);
-  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
-  pointer-events: none;
-}
-.mobile-nav-drawer.open {
-  opacity: 1; transform: translateY(0);
-  pointer-events: all;
-}
-.mobile-nav-drawer a, .mobile-nav-drawer button.nav-cta-mobile {
-  font-family: var(--serif);
-  font-size: 32px; font-weight: 400;
-  color: rgba(249,247,244,0.75);
-  text-decoration: none; border: none; background: none;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  cursor: pointer;
-  transition: color 0.2s;
-  display: block; text-align: left;
-  letter-spacing: -0.01em;
-}
-.mobile-nav-drawer a:hover,
-.mobile-nav-drawer button.nav-cta-mobile:hover { color: var(--gold-light); }
-.mobile-nav-drawer .mob-cta {
-  margin-top: 28px;
-  background: var(--gold); color: #fff !important;
-  padding: 16px 32px; border-radius: 4px;
-  font-family: var(--sans) !important;
-  font-size: 13px !important; font-weight: 600;
-  letter-spacing: 0.16em !important; text-transform: uppercase;
-  text-align: center !important; border-bottom: none !important;
-}
-
-/* ============================================================
-   MOBILE STICKY CTA STRIP
-   ============================================================ */
-.mob-cta-strip {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 450;
-  background: var(--bg-dark);
-  border-top: 1px solid rgba(201,168,76,0.22);
-  padding: 14px 20px;
-  gap: 10px;
-  animation: fadeIn 1s 2s both;
-}
-.mob-cta-strip input {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 6px;
-  color: #fff; font-family: var(--sans); font-size: 14px;
-  padding: 11px 14px; outline: none;
-  transition: border-color 0.25s;
-  min-width: 0;
-}
-.mob-cta-strip input::placeholder { color: rgba(255,255,255,0.35); }
-.mob-cta-strip input:focus { border-color: var(--gold-light); }
-.mob-cta-strip button {
-  background: var(--gold); color: #fff; border: none;
-  padding: 11px 18px; border-radius: 6px;
-  font-family: var(--sans); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  cursor: pointer; white-space: nowrap;
-  transition: background 0.25s;
-  flex-shrink: 0;
-}
-.mob-cta-strip button:hover { background: var(--gold-dark); }
-.mob-strip-msg {
-  display: none;
-  position: absolute; bottom: 100%; left: 0; right: 0;
-  padding: 10px 20px;
-  font-size: 12.5px; text-align: center;
-  background: var(--bg-dark);
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-/* ============================================================
-   RESPONSIVE — APT GRID fix
-   ============================================================ */
-@media (max-width: 768px) {
-  .apt-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .cta-form-row { flex-direction: column; gap: 10px; }
-  .cta-input { border-right: 1px solid rgba(255,255,255,0.25) !important; border-radius: 4px !important; }
-  .cta-submit { border-radius: 4px !important; }
-  .scroll-hint { display: none; }
-  .nav-hamburger { display: flex; }
-  .mob-cta-strip { display: flex; }
-  .float-cta { bottom: 90px; }
-  .process-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 480px) {
-  .hero-content { padding: 0 20px 120px; }
-  nav { padding: 0 20px; }
-  .listings-section, .blog-section, .process-section,
-  .faq-section, .cta-section, footer, .amenities-wrap,
-  .apartments-section, .stats-strip { 
-    padding-left: 20px !important; padding-right: 20px !important; 
-  }
-  .testimonials-section .test-header,
-  .testimonials-section .test-controls { padding-left: 20px; padding-right: 20px; }
-  .test-slide { padding: 0 20px; }
-  .apt-grid { grid-template-columns: 1fr; }
-  .stats-inner { grid-template-columns: 1fr; gap: 0; }
-  .stat-block { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 28px; padding-top: 28px; }
-}
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -1510,8 +1358,6 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
 </head>
 <body>
 
-<a href="#listings" class="skip-link" style="position:fixed;top:-100%;left:16px;z-index:9999;background:var(--gold);color:#fff;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:top 0.2s;" onfocus="this.style.top='8px'" onblur="this.style.top='-100%'">Bỏ qua điều hướng</a>
-
 <!-- CUSTOM CURSOR (desktop only) -->
 <div id="cursor-dot"  aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
@@ -1527,22 +1373,7 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
     <li><a href="#process" data-en="Process">Quy Trình</a></li>
     <li><a href="#contact" class="nav-cta" data-en="Free Consultation">Tư Vấn Miễn Phí</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <button id="lang-toggle" class="lang-btn" data-lang="vi">EN</button>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Mở menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE NAV DRAWER -->
-<nav class="mobile-nav-drawer" id="mobile-drawer" aria-hidden="true">
-  <a href="#listings" class="mob-link" data-en="Properties">Dự Án</a>
-  <a href="#amenities" class="mob-link" data-en="Amenities">Tiện Ích</a>
-  <a href="#features" class="mob-link" data-en="Services">Dịch Vụ</a>
-  <a href="#blog">Insights</a>
-  <a href="#process" class="mob-link" data-en="Process">Quy Trình</a>
-  <a href="#contact" class="mob-cta" data-en="Free Consultation — Book Now">Tư Vấn Miễn Phí →</a>
+  <button id="lang-toggle" class="lang-btn" data-lang="vi">EN</button>
 </nav>
 
 <!-- ============================================================
@@ -1606,7 +1437,6 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
   </div>
 </section>
 
-<main id="main-content">
 <!-- TICKER -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
@@ -2283,11 +2113,11 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
     <h2 class="cta-title" data-en="Your dream home&lt;br&gt;is &lt;em&gt;waiting for you&lt;/em&gt;">Tổ ấm mơ ước<br>của bạn <em>đang chờ</em></h2>
     <div class="cta-form">
       <div class="cta-form-row">
-        <input id="cta-name" type="text" class="cta-input" placeholder="Họ và tên của bạn..." aria-label="Họ và tên" data-ph-en="Your full name..." required>
-        <input id="cta-phone" type="tel" class="cta-input cta-input-last" placeholder="Số điện thoại..." aria-label="Số điện thoại" data-ph-en="Phone number..." required>
+        <input id="cta-name" type="text" class="cta-input" placeholder="Họ và tên của bạn..." data-ph-en="Your full name..." required>
+        <input id="cta-phone" type="tel" class="cta-input cta-input-last" placeholder="Số điện thoại..." data-ph-en="Phone number..." required>
       </div>
       <div class="cta-form-row">
-        <input id="cta-email" type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn..." aria-label="Email" data-ph-en="Your email address...">
+        <input id="cta-email" type="email" class="cta-input" placeholder="Nhập địa chỉ email của bạn..." data-ph-en="Your email address...">
         <button id="cta-btn" class="cta-submit" data-en="Free Consultation">Tư Vấn Miễn Phí</button>
       </div>
       <div id="cta-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;text-align:center;color:#fff;"></div>
@@ -2296,8 +2126,6 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
   </div>
 </section>
 
-</main>
-
 <!-- ============================================================
      FOOTER
      ============================================================ -->
@@ -2305,7 +2133,7 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
   <div class="footer-top">
     <div>
       <a href="#" class="footer-logo">SANY<span class="dot"></span>HOLDING</a>
-      <p class="footer-desc" data-en="Crafting luxury living spaces and smart real estate investments in Vietnam since 2009. Trusted by 1,200+ families.">Kiến tạo không gian sống xa xỉ và những khoản đầu tư bất động sản thông minh tại Việt Nam từ năm 2009. Hơn 1.200 gia đình tin tưởng lựa chọn.</p>
+      <p class="footer-desc" data-en="Crafting luxury living spaces and smart real estate investments in Vietnam since 2009. Trusted by 1,200+ families.">Kiến tạo không gian sống xa xỉ và những khoản đầu tư bất động sản thông minh tại Việt Nam từ năm 2009. Trusted by 1,200+ families.</p>
       <div class="footer-socials">
         <a href="#" class="f-soc" aria-label="LinkedIn">in</a>
         <a href="#" class="f-soc" aria-label="Facebook">fb</a>
@@ -2346,7 +2174,7 @@ nav.scrolled .nav-hamburger span { background: var(--text-primary); }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 Sany Holding JSC. All rights reserved.</span>
+    <span>&copy; 2025 Sany Holding JSC. All rights reserved.</span>
     <div class="footer-bottom-links">
       <a href="#" data-en="Privacy Policy">Chính sách bảo mật</a>
       <a href="#" data-en="Terms of Use">Điều khoản sử dụng</a>
@@ -2543,20 +2371,6 @@ function showMsg(el, text, type) {
   setTimeout(() => { el.style.display = 'none'; }, 6000);
 }
 
-/* Enter key support */
-['hfc-name','hfc-phone','hfc-email'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('hfc-btn').click();
-  });
-});
-['cta-name','cta-phone','cta-email'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('cta-btn').click();
-  });
-});
-
 /* Hero form */
 document.getElementById('hfc-btn').addEventListener('click', () => {
   submitToSheet({
@@ -2676,118 +2490,7 @@ document.getElementById('cta-btn').addEventListener('click', () => {
     if (saved === 'en') setLang('en');
   } catch(e) {}
 })();
-
-/* ============================================================
-   HAMBURGER / MOBILE DRAWER
-   ============================================================ */
-(function initMobileNav() {
-  const hamburger = document.getElementById('nav-hamburger');
-  const drawer    = document.getElementById('mobile-drawer');
-  if (!hamburger || !drawer) return;
-
-  let isOpen = false;
-
-  function toggleMenu(open) {
-    isOpen = open;
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    if (open) {
-      drawer.style.display = 'flex';
-      requestAnimationFrame(() => drawer.classList.add('open'));
-      drawer.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    } else {
-      drawer.classList.remove('open');
-      drawer.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      setTimeout(() => { if (!isOpen) drawer.style.display = 'none'; }, 350);
-    }
-  }
-
-  hamburger.addEventListener('click', () => toggleMenu(!isOpen));
-
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => toggleMenu(false));
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && isOpen) toggleMenu(false);
-  });
-})();
-
-/* ============================================================
-   MOBILE STICKY CTA STRIP
-   ============================================================ */
-(function initMobStrip() {
-  const btn    = document.getElementById('mob-strip-btn');
-  const phone  = document.getElementById('mob-phone');
-  const msgEl  = document.getElementById('mob-strip-msg');
-  const strip  = document.getElementById('mob-strip');
-  if (!btn || !phone) return;
-
-  // Hide strip when contact section is visible
-  const contactSection = document.getElementById('contact');
-  if (contactSection) {
-    const stripIo = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (strip) strip.style.opacity = e.isIntersecting ? '0' : '1';
-      });
-    }, { threshold: 0.2 });
-    stripIo.observe(contactSection);
-  }
-
-  phone.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); });
-
-  btn.addEventListener('click', async () => {
-    const p = phone.value.trim();
-    if (!p) {
-      msgEl.textContent = '⚠ Vui lòng nhập số điện thoại';
-      msgEl.style.display = 'block';
-      msgEl.style.color = '#fde047';
-      setTimeout(() => { msgEl.style.display = 'none'; }, 4000);
-      return;
-    }
-    const origText = btn.textContent;
-    btn.disabled = true; btn.textContent = '...';
-    try {
-      await fetch(GAS_URL, {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: '', phone: p, email: '', source: 'mobile-strip', ua: navigator.userAgent })
-      });
-      msgEl.textContent = '✓ Đã nhận! Chúng tôi gọi lại trong 2 giờ.';
-      msgEl.style.display = 'block';
-      msgEl.style.color = '#86efac';
-      phone.value = '';
-      setTimeout(() => { msgEl.style.display = 'none'; }, 7000);
-    } catch {
-      msgEl.textContent = 'Lỗi. Vui lòng gọi hotline: 028 3822 8888';
-      msgEl.style.display = 'block';
-      msgEl.style.color = '#fca5a5';
-      setTimeout(() => { msgEl.style.display = 'none'; }, 6000);
-    } finally {
-      btn.disabled = false; btn.textContent = origText;
-    }
-  });
-})();
-
-/* ============================================================
-   TESTIMONIALS — pause autoplay on hover
-   ============================================================ */
-(function pauseTestOnHover() {
-  const wrap = document.querySelector('.test-track-wrap');
-  if (!wrap) return;
-  wrap.addEventListener('mouseenter', () => clearInterval(autoPlay));
-})();
 </script>
-
-
-<!-- MOBILE STICKY CTA STRIP -->
-<div class="mob-cta-strip" id="mob-strip" role="form" aria-label="Đặt lịch tư vấn">
-  <div class="mob-strip-msg" id="mob-strip-msg"></div>
-  <input id="mob-phone" type="tel" placeholder="Số điện thoại của bạn..." data-ph-en="Your phone number..." aria-label="Số điện thoại">
-  <button id="mob-strip-btn" data-en="Call Back">Gọi Lại Ngay</button>
-</div>
 
 <a href="#contact" class="float-cta" aria-label="Li&#234;n h&#7879; ngay">
   <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
